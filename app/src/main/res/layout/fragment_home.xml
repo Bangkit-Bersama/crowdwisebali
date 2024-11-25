@@ -31,6 +31,20 @@
         android:id="@+id/rv_recommendation"
         app:layout_constraintTop_toBottomOf="@+id/tv_welcomeToApp" />
 
+    <TextView
+        android:id="@+id/tv_titlePrediction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/titlePrediction"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_recommendation" />
+
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

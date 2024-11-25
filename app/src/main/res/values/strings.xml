@@ -32,10 +32,19 @@
     <!--    Home-->
     <string name="welcome">Welcome</string>
     <string name="welcomeToApp">Welcome to Crowdwise Bali!</string>
+    <string name="titlePrediction">Try to predict the destinations !</string>
 
-<!--    Detail Object Destination-->
+    <!--    Detail Object Destination-->
     <string name="image_dest">Image Destination</string>
     <string name="maps">Maps</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 
 
 </resources>

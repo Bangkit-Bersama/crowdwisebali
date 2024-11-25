@@ -14,7 +14,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="@string/dest_fav"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,5 +29,5 @@
         android:id="@+id/rv_item_fav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textFavorite" />
 </androidx.constraintlayout.widget.ConstraintLayout>
