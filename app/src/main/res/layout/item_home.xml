@@ -29,7 +29,7 @@
         <!-- for string imageView nya sesuaiin sm API-->
 
         <TextView
-            android:id="@+id/tv_event_name"
+            android:id="@+id/tv_dest_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -58,7 +58,7 @@
             android:textSize="12sp"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@id/tv_event_name"
+            card_view:layout_constraintTop_toBottomOf="@id/tv_dest_name"
             tools:text="@string/dest_loc" />
 
         <TextView

@@ -6,8 +6,23 @@ import androidx.lifecycle.ViewModel
 
 class HomeViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    //Need Response recommendation from API
+//    private val _recommendation = MutableLiveData<list<Nama Response(tunggu API)>>()
+//    val recommendation: LiveData<List<Nama Response(tunggu API)>> = _recommendation
+
+    private val _isRecommendationLoading = MutableLiveData<Boolean>()
+    val isRecommendationLoading: LiveData<Boolean> = _isRecommendationLoading
+
+    //call the data from API
+//    fun fetchRecommendation(){
+//        val client = ApiConfig.getApiService().namaApi(token?) //ganti namaApi(token?) kalo dah ada ApiService
+//        client.enqueue(object : Callback<NamaResponse> {
+//            override fun onResponse(call: Call<NamaResponse>, response: Response<NamaResponse>) {
+//                _isRecommendationLoading.value = false
+//                if(response.isSuccessfull){
+//                    _isRecommendationLoading.value = response.body()?.
+//                }
+//            }
+//        })
+//    }
 }
