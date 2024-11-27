@@ -14,7 +14,7 @@ class ApiConfig {
                 .addInterceptor(loggingInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()
-//                .baseUrl("-----")
+                .baseUrl("https://crowdwisebali-api-staging-799097160817.asia-southeast2.run.app/api/v1")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
