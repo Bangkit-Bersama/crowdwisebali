@@ -20,6 +20,8 @@
     <string name="tv_password">Password</string>
     <string name="tv_or">or</string>
     <string name="continueWithGoogle">Continue with Google</string>
+    <string name="do_not_have_account">Dont have an account? <font color="#3498DB">Sign Up</font></string>
+    <string name="have_account">Already have an account? <font color="#3498DB">Log In</font></string>
 
     <!--Setting-->
     <string name="profile_picture">Profile Picture</string>
