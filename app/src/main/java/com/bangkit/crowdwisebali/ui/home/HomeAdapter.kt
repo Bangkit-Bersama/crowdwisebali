@@ -18,7 +18,7 @@ class HomeAdapter(private val onClick: (SearchResultItem) -> Unit) : // Update t
         fun bind(response: SearchResultItem, onClick: (SearchResultItem) -> Unit) { // Update the bind method to use SearchResultItem
             binding.tvDestName.text = response.placeName // Assuming 'name' is a property of SearchResultItem
             binding.rating.text = response.rating?.toString() ?: "0"
-            binding.userCount.text = response.userRatingCount?.toString() ?: "(0)"
+            binding.userCount.text = "(${response.userRatingCount ?: 0})"
             binding.tvDestLoc.text = response.googleMapsLink // Assuming 'location' is a property of SearchResultItem
 
             val photoReference = response.photos?.firstOrNull()?.photoReference
@@ -40,7 +40,7 @@ class HomeAdapter(private val onClick: (SearchResultItem) -> Unit) : // Update t
             }
 
             binding.root.setOnClickListener {
-                onClick(response) // Trigger onClick with SearchResultItem
+                onClick(response)
             }
         }
     }
@@ -56,9 +56,9 @@ class HomeAdapter(private val onClick: (SearchResultItem) -> Unit) : // Update t
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<SearchResultItem>() { // Update to use SearchResultItem
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<SearchResultItem>() {
             override fun areItemsTheSame(oldItem: SearchResultItem, newItem: SearchResultItem): Boolean {
-                return oldItem.placeId == newItem.placeId // Assuming placeId is a unique identifier in SearchResultItem
+                return oldItem.placeId == newItem.placeId
             }
 
             override fun areContentsTheSame(oldItem: SearchResultItem, newItem: SearchResultItem): Boolean {
