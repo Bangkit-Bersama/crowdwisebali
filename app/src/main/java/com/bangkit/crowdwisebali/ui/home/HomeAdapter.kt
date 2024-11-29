@@ -7,23 +7,23 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.crowdwisebali.R
-import com.bangkit.crowdwisebali.data.remote.response.SearchResultItem // Assuming SearchResultItem is the correct data model
+import com.bangkit.crowdwisebali.data.remote.response.SearchResultItem
 import com.bangkit.crowdwisebali.databinding.ItemHomeBinding
 import com.bumptech.glide.Glide
 
-class HomeAdapter(private val onClick: (SearchResultItem) -> Unit) : // Update to use SearchResultItem
-    ListAdapter<SearchResultItem, HomeAdapter.HomeViewHolder>(DIFF_CALLBACK) { // Update the adapter to use SearchResultItem
+class HomeAdapter(private val onClick: (SearchResultItem) -> Unit) :
+    ListAdapter<SearchResultItem, HomeAdapter.HomeViewHolder>(DIFF_CALLBACK) {
 
     class HomeViewHolder(private val binding: ItemHomeBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(response: SearchResultItem, onClick: (SearchResultItem) -> Unit) { // Update the bind method to use SearchResultItem
-            binding.tvDestName.text = response.placeName // Assuming 'name' is a property of SearchResultItem
+        fun bind(response: SearchResultItem, onClick: (SearchResultItem) -> Unit) {
+            binding.tvDestName.text = response.placeName
             binding.rating.text = response.rating?.toString() ?: "0"
             binding.userCount.text = "(${response.userRatingCount ?: 0})"
-            binding.tvDestLoc.text = response.googleMapsLink // Assuming 'location' is a property of SearchResultItem
+            binding.tvDestLoc.text = response.googleMapsLink
 
             val photoReference = response.photos?.firstOrNull()?.photoReference
             val photoUrl = if (photoReference != null) {
-                "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=$photoReference&key=API_KEY" // Replace with actual API key
+                "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=$photoReference&key=API_KEY"
             } else {
                 null
             }
@@ -35,7 +35,7 @@ class HomeAdapter(private val onClick: (SearchResultItem) -> Unit) : // Update t
                 Log.d("API_Response", "Photo URL: $photoUrl")
             } else {
                 Glide.with(binding.root.context)
-                    .load(R.drawable.welcome)
+                    .load(R.drawable.image_placeholder)
                     .into(binding.imgDestPhoto)
             }
 
