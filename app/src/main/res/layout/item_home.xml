@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_marginBottom="16dp"
-    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
     card_view:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,8 +17,9 @@
         <ImageView
             android:id="@+id/img_dest_photo"
             android:layout_width="200dp"
-            android:layout_height="165dp"
+            android:layout_height="180dp"
             android:scaleType="fitXY"
+            android:padding="4dp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
@@ -26,7 +27,43 @@
             card_view:layout_constraintVertical_bias="0.0"
             android:contentDescription="@string/image_dest"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
-        <!-- for string imageView nya sesuaiin sm API-->
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="12dp"
+            android:src="@drawable/star"
+            card_view:layout_constraintBottom_toBottomOf="@+id/img_dest_photo"
+            card_view:layout_constraintStart_toStartOf="@+id/img_dest_photo" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rating"
+            android:textColor="@color/white"
+            android:shadowColor="@color/black"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="12dp"
+            card_view:layout_constraintBottom_toBottomOf="@+id/img_dest_photo"
+            card_view:layout_constraintStart_toEndOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/user_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_count"
+            android:textColor="@color/white"
+            android:shadowColor="@color/black"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="12dp"
+            card_view:layout_constraintBottom_toBottomOf="@+id/img_dest_photo"
+            card_view:layout_constraintStart_toEndOf="@+id/rating" />
 
         <TextView
             android:id="@+id/tv_dest_name"
@@ -50,8 +87,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:layout_toEndOf="@id/img_dest_photo"
             android:ellipsize="end"
             android:maxLines="2"
@@ -59,25 +97,8 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@id/tv_dest_name"
-            tools:text="@string/dest_loc" />
-
-        <TextView
-            android:id="@+id/tv_dest_crowd"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:layout_toEndOf="@id/img_dest_photo"
-            android:ellipsize="end"
-            android:maxLines="2"
-            android:textSize="13sp"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@id/tv_dest_loc"
-            tools:text="@string/dest_crowd" />
+            tools:text="@string/dest_loc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
