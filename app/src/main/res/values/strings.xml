@@ -9,19 +9,7 @@
 
     <!--Welcome-->
     <string name="titleWelcome">"Welcome to <font color="#3498DB">CrowdWise Bali</font>, Discover New Stories!"</string>
-    <string name="loginButton">Login</string>
-    <string name="signupButton">Signup</string>
-
-<!--    Signup & Login-->
-    <string name="signup">Sign Up</string>
-    <string name="login">Log In</string>
-    <string name="tv_name">Name</string>
-    <string name="tv_email">Email</string>
-    <string name="tv_password">Password</string>
-    <string name="tv_or">or</string>
-    <string name="continueWithGoogle">Continue with Google</string>
-    <string name="do_not_have_account">Dont have an account? <font color="#3498DB">Sign Up</font></string>
-    <string name="have_account">Already have an account? <font color="#3498DB">Log In</font></string>
+    <string name="signInWithGoogle">Sign In with Google</string>
 
     <!--Setting-->
     <string name="profile_picture">Profile Picture</string>
@@ -41,6 +29,9 @@
     <string name="dest_crowd">Destination Crowd</string>
     <string name="save_favorite">Save Favorite</string>
 
+    <string name="rating">rate</string>
+    <string name="user_count">(user count)</string>
+
     <!--    Searching-->
     <string name="search">Search</string>
     <string name="sub_search">Search Your Dreams</string>
@@ -49,6 +40,8 @@
     <string name="welcome">Welcome</string>
     <string name="welcomeToApp">Welcome to CrowdWise Bali!</string>
     <string name="titlePrediction">Try to predict the destinations !</string>
+    <string name="titleListObject">Object Destination</string>
+    <string name="titleRecommendation">Recommendation for you</string>
 
     <!--    Detail Object Destination-->
     <string name="image_dest">Image Destination</string>
