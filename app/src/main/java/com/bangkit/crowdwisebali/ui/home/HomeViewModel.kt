@@ -4,14 +4,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.bangkit.crowdwisebali.data.remote.response.RecommendationResponse
 import com.bangkit.crowdwisebali.data.remote.response.SearchResultItem
 import com.bangkit.crowdwisebali.data.remote.retrofit.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
 
@@ -24,6 +22,18 @@ class HomeViewModel : ViewModel() {
     private val _snackbarText = MutableLiveData<String>()
     val snackbarText: LiveData<String> = _snackbarText
 
+    private fun sortRecommendationsByRatingAndUserCount(data: List<SearchResultItem>): List<SearchResultItem> {
+        return data.sortedWith(
+            compareByDescending<SearchResultItem> {
+                when (val rating = it.rating) {
+                    is Double -> rating
+                    is Int -> rating.toDouble()
+                    else -> 0.0
+                }
+            }.thenByDescending { it.userRatingCount ?: 0 }
+        )
+    }
+
     // Fetch recommendation data from API
     fun fetchRecommendation(latitude: Double, longitude: Double, placeType: String) {
         _isRecommendationLoading.value = true
@@ -35,8 +45,10 @@ class HomeViewModel : ViewModel() {
             ) {
                 _isRecommendationLoading.value = false
                 if (response.isSuccessful) {
-                    // Ambil searchResult dari data dan tetapkan ke _recommendation
-                    _recommendation.value = response.body()?.data?.searchResult
+                    val rawData = response.body()?.data?.searchResult ?: emptyList()
+                    val sortedData = sortRecommendationsByRatingAndUserCount(rawData) // Sorting data
+                    _recommendation.value = sortedData
+//                    _recommendation.value = response.body()?.data?.searchResult
                     if (_recommendation.value == null) {
                         Log.e("API_RESPONSE", "searchResult is null")
                     }

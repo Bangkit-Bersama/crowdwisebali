@@ -40,7 +40,6 @@ class HomeFragment : Fragment() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
-        // Set up RecyclerView with the adapter
         binding.rvRecommendation.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         homeAdapter = HomeAdapter { response ->
             val intent = Intent(context, DetailActivity::class.java).apply {
@@ -81,11 +80,9 @@ class HomeFragment : Fragment() {
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
             when {
                 permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
-                    // Precise location access granted.
                     getMyLastLocation()
                 }
                 permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
-                    // Only approximate location access granted.
                     getMyLastLocation()
                 }
                 else -> {
@@ -107,18 +104,15 @@ class HomeFragment : Fragment() {
         ) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 if (location != null) {
-                    // Ambil latitude dan longitude
                     val latitude: Double = location.latitude
                     val longitude: Double = location.longitude
 
-                    // Pastikan Anda mengirimkan nilai-nilai tersebut
                     homeViewModel.fetchRecommendation(latitude, longitude, "restaurant") // Misalnya, "restaurant" untuk placeType
                 } else {
                     Toast.makeText(requireContext(), "Location not found", Toast.LENGTH_SHORT).show()
                 }
             }
         } else {
-            // Minta izin lokasi
             requestPermissionLauncher.launch(
                 arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
