@@ -1,15 +1,24 @@
 package com.bangkit.crowdwisebali.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import android.Manifest
+import android.content.pm.PackageManager
+import android.util.Log
+import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import com.bangkit.crowdwisebali.databinding.FragmentHomeBinding
 import com.bangkit.crowdwisebali.ui.detail.DetailActivity
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.material.snackbar.Snackbar
 
 class HomeFragment : Fragment() {
 
@@ -17,7 +26,9 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var homeAdapter: HomeAdapter
-    private lateinit var homeViewModel: HomeViewModel
+    private val homeViewModel: HomeViewModel by viewModels()
+
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -27,33 +38,35 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
 
-        //recommendation RV
-//        homeAdapter = HomeAdapter{ titleObject -> //titleObject sesuaiin sm response di Adapter
-//            val intent = Intent(context, DetailActivity::class.java).apply {
-//                putExtra("places_id", places.id) //places --> endpoints detail
-//            }
-//            startActivity(intent)
-//        }
-
+        // Set up RecyclerView with the adapter
         binding.rvRecommendation.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-//        binding.rvRecommendation.adapter = homeAdapter
+        homeAdapter = HomeAdapter { response ->
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                putExtra("places_id", response.placeId)
+            }
+            startActivity(intent)
+        }
+        binding.rvRecommendation.adapter = homeAdapter
         binding.rvRecommendation.isNestedScrollingEnabled = true
 
-//        observeViewModel()
-    }
+        homeViewModel.recommendation.observe(viewLifecycleOwner){ response ->
+            homeAdapter.submitList(response)
+        }
 
-    //LiveData
-//    private fun observeViewModel(){
-//        homeViewModel.isRecommendationLoading.observe(viewLifecycleOwner){ isLoading ->
-//            showLoadingRecommendation(isLoading)
-//        }
-//
-//        homeViewModel.recommendation.observe(viewLifecycleOwner) { events ->
-//            recommendation.submitList(events.take(5)) //maks 5 muncul
-//        }
-//    }
+        homeViewModel.isRecommendationLoading.observe(viewLifecycleOwner) { isLoading ->
+            showLoadingRecommendation(isLoading)
+        }
+
+        homeViewModel.snackbarText.observe(viewLifecycleOwner) { message ->
+            message?.let {
+                Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
+            }
+        }
+
+        getMyLastLocation()
+    }
 
     private fun showLoadingRecommendation(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
@@ -63,4 +76,56 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            when {
+                permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
+                    // Precise location access granted.
+                    getMyLastLocation()
+                }
+                permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
+                    // Only approximate location access granted.
+                    getMyLastLocation()
+                }
+                else -> {
+                    // No location access granted.
+                }
+            }
+        }
+
+    private fun checkPermission(permission: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            requireContext(),
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun getMyLastLocation() {
+        if (checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
+            checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+        ) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
+                if (location != null) {
+                    // Ambil latitude dan longitude
+                    val latitude: Double = location.latitude
+                    val longitude: Double = location.longitude
+
+                    // Pastikan Anda mengirimkan nilai-nilai tersebut
+                    homeViewModel.fetchRecommendation(latitude, longitude, "restaurant") // Misalnya, "restaurant" untuk placeType
+                } else {
+                    Toast.makeText(requireContext(), "Location not found", Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else {
+            // Minta izin lokasi
+            requestPermissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
+        }
+    }
+
 }
