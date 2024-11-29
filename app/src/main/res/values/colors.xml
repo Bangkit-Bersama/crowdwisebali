@@ -11,8 +11,8 @@
     <color name="sky_blue_300">#AAF5F8</color>
     <color name="sky_blue_200">#C8FCFA</color>
 
-    <color name="alice_blue">f5fdff</color>
+    <color name="alice_blue">#f5fdff</color>
 
-    <color name="red">DE5753</color>
+    <color name="red">#DE5753</color>
 
 </resources>
