@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "799097160817",
+    "project_id": "crowdwise-bali",
+    "storage_bucket": "crowdwise-bali.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799097160817:android:958f4dd71b4dc2d80287d0",
+        "android_client_info": {
+          "package_name": "com.bangkit.crowdwisebali"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799097160817-5cphc5j2028j68l6jqn885bg0q45djrg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bangkit.crowdwisebali",
+            "certificate_hash": "18cc1ccc81f40ddd5a74a3361cba54cb5a6a7639"
+          }
+        },
+        {
+          "client_id": "799097160817-b5r1niv6qu8gbs9fgrc5mg85n667adh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6vHxfMwNF0Mij9cWxvXoXjwhfu2cMA8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799097160817-b5r1niv6qu8gbs9fgrc5mg85n667adh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
