@@ -10,6 +10,7 @@ import com.bangkit.crowdwisebali.R
 import com.bangkit.crowdwisebali.data.remote.response.SearchResultItem
 import com.bangkit.crowdwisebali.databinding.ItemHomeBinding
 import com.bumptech.glide.Glide
+import com.bangkit.crowdwisebali.BuildConfig
 
 class HomeAdapter(private val onClick: (SearchResultItem) -> Unit) :
     ListAdapter<SearchResultItem, HomeAdapter.HomeViewHolder>(DIFF_CALLBACK) {
@@ -17,13 +18,14 @@ class HomeAdapter(private val onClick: (SearchResultItem) -> Unit) :
     class HomeViewHolder(private val binding: ItemHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(response: SearchResultItem, onClick: (SearchResultItem) -> Unit) {
             binding.tvDestName.text = response.placeName
+            binding.tvDestLoc.text = response.googleMapsLink
             binding.rating.text = response.rating?.toString() ?: "0"
             binding.userCount.text = "(${response.userRatingCount ?: 0})"
-            binding.tvDestLoc.text = response.googleMapsLink
 
+            val apiKey = BuildConfig.apiKey
             val photoReference = response.photos?.firstOrNull()?.photoReference
             val photoUrl = if (photoReference != null) {
-                "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=$photoReference&key=API_KEY"
+                "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=$photoReference&key=$apiKey"
             } else {
                 null
             }

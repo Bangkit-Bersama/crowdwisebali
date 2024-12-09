@@ -19,8 +19,8 @@ class HomeViewModel : ViewModel() {
     private val _isRecommendationLoading = MutableLiveData<Boolean>()
     val isRecommendationLoading: LiveData<Boolean> = _isRecommendationLoading
 
-    private val _snackbarText = MutableLiveData<String>()
-    val snackbarText: LiveData<String> = _snackbarText
+    private val _snackBarText = MutableLiveData<String>()
+    val snackBarText: LiveData<String> = _snackBarText
 
     private fun sortRecommendationsByRatingAndUserCount(data: List<SearchResultItem>): List<SearchResultItem> {
         return data.sortedWith(
@@ -32,6 +32,22 @@ class HomeViewModel : ViewModel() {
                 }
             }.thenByDescending { it.userRatingCount ?: 0 }
         )
+    }
+
+    fun filterPlacesByType(data: List<SearchResultItem>): Map<String, List<SearchResultItem>> {
+        val groupedData = mutableMapOf<String, MutableList<SearchResultItem>>()
+
+        for (item in data){
+            item.placeType?.forEach { type ->
+                if (type != null && !groupedData.containsKey(type)) {
+                    groupedData[type] = mutableListOf()
+                }
+                type?.let { groupedData[it]?.add(item) }
+            }
+
+        }
+        Log.d("GroupedData", groupedData.toString())
+        return groupedData
     }
 
     // Fetch recommendation data from API
@@ -46,22 +62,22 @@ class HomeViewModel : ViewModel() {
                 _isRecommendationLoading.value = false
                 if (response.isSuccessful) {
                     val rawData = response.body()?.data?.searchResult ?: emptyList()
-                    val sortedData = sortRecommendationsByRatingAndUserCount(rawData) // Sorting data
+                    val sortedData = sortRecommendationsByRatingAndUserCount(rawData)
+
                     _recommendation.value = sortedData
-//                    _recommendation.value = response.body()?.data?.searchResult
-                    if (_recommendation.value == null) {
-                        Log.e("API_RESPONSE", "searchResult is null")
+
+                    if (_recommendation.value.isNullOrEmpty()) {
+                        Log.e("API_RESPONSE", "searchResult is null or empty")
                     }
                 } else {
-                    _snackbarText.value = "Gagal memuat data: ${response.message()}"
+                    _snackBarText.value = "Gagal memuat data: ${response.message()}"
                     Log.e("API_ERROR", "API error: ${response.errorBody()?.string()}")
                 }
             }
 
-
             override fun onFailure(call: Call<RecommendationResponse>, t: Throwable) {
                 _isRecommendationLoading.value = false
-                _snackbarText.value = "Koneksi gagal: ${t.message}"
+                _snackBarText.value = "Koneksi gagal: ${t.message}"
             }
         })
     }

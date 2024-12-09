@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -16,32 +16,46 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CrowdWiseBali"
         tools:targetApi="31">
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCIsjZlXwP2Qfp9e3tYm6sQuH6F8HC8S64"/>
-
         <activity
-            android:name=".ui.auth.signup.SignupActivity"
+            android:name=".ui.onboarding.OnBoardingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CrowdWiseBali.Splash"/>
+        <!-- Splash Activity -->
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.CrowdWiseBali.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.profile.InfoActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.login.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login" />
+            android:name=".ui.profile.AboutUsActivity"
+            android:exported="false" />
+
+<!--        <meta-data-->
+<!--            android:name="com.google.android.geo.API_KEY"-->
+<!--            android:value="${apiKey}" />-->
+
+<!--        <meta-data-->
+<!--            android:name="com.google.android.client_id"-->
+<!--            android:value="${client_id}" />-->
+
         <activity
             android:name=".ui.login.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

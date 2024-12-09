@@ -42,6 +42,9 @@
     <string name="titlePrediction">Try to predict the destinations !</string>
     <string name="titleListObject">Object Destination</string>
     <string name="titleRecommendation">Recommendation for you</string>
+    <string name="lodging">Lodging</string>
+    <string name="poi">Point of Interest</string>
+    <string name="ens">Establishment</string>
 
     <!--    Detail Object Destination-->
     <string name="image_dest">Image Destination</string>
@@ -54,6 +57,53 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="date_pick">Choose Date</string>
+    <string name="prediction">Predict the Crowd!</string>
 
+    <!--    Splash-->
+    <string name="text_one_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
+    <string name="text_two_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
+    <string name="text_three_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
+
+    <string name="title_one_splash">Displays live crowd levels at various tourist destinations across Bali</string>
+    <string name="title_two_splash">Highlights lesser-known locations to explore, encouraging sustainable tourism</string>
+    <string name="title_three_splash">Visualizes crowd density across locations</string>
+
+    <!--    Profile-->
+    <string name="our_teams">Our Teams</string>
+    <string name="ml_team">Machine Learning Teams</string>
+    <string name="md_team">Mobile Development Teams</string>
+    <string name="cc_team">Cloud Computing Teams</string>
+    <string name="cc_1">I Gede Hari Kresna Wiyasa</string>
+    <string name="cc_2">Ida Bagus Made Wiguna Tedja Sukmana	</string>
+    <string name="ml_1">Devon Vivian Gunawan</string>
+    <string name="ml_2">Gede Eka Putra Wijaya	</string>
+    <string name="ml_3">Ni Made Ayu Pranasanthi Dewi</string>
+    <string name="md_0">Gagas Pradipta Jatmiko</string>
+    <string name="md_1">Lusia Elvira Sue Sare</string>
+    <string name="logout">Log out</string>
+
+    <string name="title_theme">Theme</string>
+    <string name="title_language">Language</string>
+    <string name="title_about">About</string>
+    <string name="title_feature">Feature</string>
+    <string name="title_one_prof">Real-Time Visitor Density</string>
+    <string name="title_two_prof">Hidden Gems Recommendations</string>
+    <string name="title_three_prof">Map Integration</string>
+
+    <string name="teks_about">About Us</string>
+    <string name="teks_info">Application Information</string>
+    <string name="teks_theme">Change Theme</string>
+    <string name="teks_language">Change Language</string>
+    <string name="teks_one_prof">Displays live crowd levels at various tourist destinations across Bali</string>
+    <string name="teks_two_prof">Highlights lesser-known locations to explore, encouraging sustainable tourism</string>
+    <string name="teks_three_prof">Visualizes crowd density across locations</string>
+
+    <string name="teks_app">CrowdWise Bali is an innovative mobile application aimed at alleviating overcrowding in Balis most popular tourist destinations. It offers real-time visitor density data, allowing tourists to make informed decisions and discover less crowded spots.</string>
+
+    <!--    Button-->
+    <string name="button_back">Back</string>
+    <string name="button_skip">Skip</string>
+    <string name="button_next">Next</string>
 
 </resources>

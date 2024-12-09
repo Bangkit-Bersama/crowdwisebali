@@ -12,9 +12,11 @@ data class RecommendationResponse(
 )
 
 data class Data(
+
 	@field:SerializedName("search_result")
 	val searchResult: List<SearchResultItem> = listOf()
 )
+
 
 data class SearchResultItem(
 
@@ -26,6 +28,9 @@ data class SearchResultItem(
 
 	@field:SerializedName("user_rating_count")
 	val userRatingCount: Int? = null,
+
+	@field:SerializedName("place_type")
+	val placeType: List<String?>? = null,
 
 	@field:SerializedName("rating")
 	val rating: Any? = null,
@@ -51,3 +56,4 @@ data class PhotosItem(
 	@field:SerializedName("height")
 	val height: Int? = null
 )
+

@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">CrowdWiseBali</string>
+
+    <!--Menu Title-->
+    <string name="title_home">Beranda</string>
+    <string name="title_search">Cari</string>
+    <string name="title_favorite">Favorit</string>
+    <string name="title_profile">Profil</string>
+
+    <!--Welcome-->
+    <string name="titleWelcome">"Selamat datang di <font color="#3498DB">CrowdWise Bali</font>, Temukan Cerita Baru!"</string>
+    <string name="signInWithGoogle">Masuk dengan Google</string>
+
+    <!--Setting-->
+    <string name="profile_picture">Foto Profil</string>
+    <string name="fab_edit_profile">Edit Profil</string>
+    <string name="name">Nama</string>
+    <string name="email">Email</string>
+    <string name="sub_settings">Pengaturan</string>
+    <string name="theme">Tema</string>
+    <string name="enable_theme">Aktifkan Tema</string>
+    <string name="about">Tentang Kami</string>
+    <string name="info_app">Informasi Aplikasi</string>
+
+    <!--Favorite item (item_fav)-->
+    <string name="dest_fav">Ini adalah Destinasi Favorit Anda</string>
+    <string name="dest_name">Nama Destinasi</string>
+    <string name="dest_loc">Lokasi Destinasi</string>
+    <string name="dest_crowd">Kepadatan Destinasi</string>
+    <string name="save_favorite">Simpan Favorit</string>
+
+    <string name="rating">penilaian</string>
+    <string name="user_count">(jumlah pengguna)</string>
+
+    <!--Searching-->
+    <string name="search">Cari</string>
+    <string name="sub_search">Cari Impian Anda</string>
+
+    <!--Home-->
+    <string name="welcome">Selamat Datang</string>
+    <string name="welcomeToApp">Selamat datang di CrowdWise Bali!</string>
+    <string name="titlePrediction">Coba prediksi destinasi!</string>
+    <string name="titleListObject">Daftar Destinasi</string>
+    <string name="titleRecommendation">Rekomendasi untuk Anda</string>
+    <string name="lodging">Penginapan</string>
+    <string name="poi">Tempat Menarik</string>
+    <string name="ens">Fasilitas</string>
+
+    <!--Detail Object Destination-->
+    <string name="image_dest">Gambar Destinasi</string>
+    <string name="maps">Peta</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Kata Sandi</string>
+    <string name="action_sign_in">Masuk atau Daftar</string>
+    <string name="action_sign_in_short">Masuk</string>
+    <string name="invalid_username">Nama pengguna tidak valid</string>
+    <string name="invalid_password">Kata sandi harus lebih dari 5 karakter</string>
+    <string name="login_failed">"Login gagal"</string>
+    <string name="date_pick">Pilih Tanggal</string>
+    <string name="prediction">Prediksi Kepadatan!</string>
+
+    <!--Splash-->
+    <string name="text_one_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
+    <string name="text_two_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
+    <string name="text_three_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
+
+    <string name="title_one_splash">Menampilkan tingkat kepadatan pengunjung secara langsung di berbagai destinasi wisata di Bali</string>
+    <string name="title_two_splash">Menyoroti lokasi-lokasi yang kurang dikenal untuk dijelajahi, mendorong pariwisata yang berkelanjutan</string>
+    <string name="title_three_splash">Memvisualisasikan kepadatan pengunjung di berbagai lokasi</string>
+
+    <!--Profile-->
+    <string name="our_teams">Tim Kami</string>
+    <string name="ml_team">Machine Learning Teams</string>
+    <string name="md_team">Mobile Development Teams</string>
+    <string name="cc_team">Cloud Computing Teams</string>
+    <string name="cc_1">I Gede Hari Kresna Wiyasa</string>
+    <string name="cc_2">Ida Bagus Made Wiguna Tedja Sukmana</string>
+    <string name="ml_1">Devon Vivian Gunawan</string>
+    <string name="ml_2">Gede Eka Putra Wijaya</string>
+    <string name="ml_3">Ni Made Ayu Pranasanthi Dewi</string>
+    <string name="md_0">Gagas Pradipta Jatmiko</string>
+    <string name="md_1">Lusia Elvira Sue Sare</string>
+
+    <string name="title_theme">Tema</string>
+    <string name="title_language">Bahasa</string>
+    <string name="title_about">Tentang</string>
+    <string name="title_feature">Fitur</string>
+    <string name="title_one_prof">Kepadatan Pengunjung Secara Langsung</string>
+    <string name="title_two_prof">Rekomendasi Tempat Tersembunyi</string>
+    <string name="title_three_prof">Integrasi Peta</string>
+
+    <string name="teks_about">Tentang Kami</string>
+    <string name="teks_info">Informasi Aplikasi</string>
+    <string name="teks_theme">Ubah Tema</string>
+    <string name="teks_language">Ubah Bahasa</string>
+    <string name="teks_one_prof">Menampilkan tingkat kepadatan pengunjung secara langsung di berbagai destinasi wisata di Bali</string>
+    <string name="teks_two_prof">Menyoroti lokasi-lokasi yang kurang dikenal untuk dijelajahi, mendorong pariwisata yang berkelanjutan</string>
+    <string name="teks_three_prof">Memvisualisasikan kepadatan pengunjung di berbagai lokasi</string>
+
+    <string name="teks_app">CrowdWise Bali adalah aplikasi mobile inovatif yang bertujuan untuk mengurangi kepadatan di destinasi wisata populer di Bali. Aplikasi ini memberikan data kepadatan pengunjung secara real-time, memungkinkan wisatawan membuat keputusan yang lebih bijak dan menemukan tempat yang lebih sepi.</string>
+
+    <!--Button-->
+    <string name="button_back">Kembali</string>
+    <string name="button_skip">Lewati</string>
+    <string name="button_next">Selanjutnya</string>
+
+</resources>

@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.google.gms.google.services)
+    id("kotlin-android")
+    id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
+    alias(libs.plugins.google.services)
 }
 
 android {
@@ -16,6 +18,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "apiKey", "\"${project.findProperty("apiKey") ?: "default_key"}\"")
+        buildConfigField("String", "client_id", "\"${project.findProperty("client_id") ?: "default_client_id"}\"")
     }
 
     buildTypes {
@@ -36,6 +41,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -56,6 +62,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.jetbrains.kotlinx.coroutines.android)
+
 //    retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit2.converter.gson)
@@ -68,9 +78,17 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation(libs.play.services.location)
 
+//    Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+
 //    auth google
-//    implementation(libs.play.services.auth)
-//    implementation(libs.androidx.credentials)
-//    implementation(libs.androidx.credentials.play.services.auth)
-//    implementation(libs.googleid)
+    implementation(libs.play.services.auth)
+    implementation(libs.firebase.analytics)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation (libs.androidx.credentials)
+    implementation( libs.androidx.credentials.play.services.auth)
+    implementation (libs.googleid)
 }
