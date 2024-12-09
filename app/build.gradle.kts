@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     id("kotlin-android")
@@ -19,8 +21,12 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "apiKey", "\"${project.findProperty("apiKey") ?: "default_key"}\"")
-        buildConfigField("String", "client_id", "\"${project.findProperty("client_id") ?: "default_client_id"}\"")
+        val secretsFile = rootProject.file("local.properties")
+        val properties = Properties()
+        properties.load(secretsFile.inputStream())
+
+        buildConfigField("String", "apiKey", "\"${properties.getProperty("apiKey") ?: "default_key"}\"")
+        buildConfigField("String", "client_id", "\"${properties.getProperty("client_id") ?: "default_client_id"}\"")
     }
 
     buildTypes {
