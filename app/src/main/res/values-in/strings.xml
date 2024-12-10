@@ -68,9 +68,9 @@
     <string name="title_two_splash">Temukan Permata Tersembunyi: Jelajahi Tempat Rahasia Bali</string>
     <string name="title_three_splash">Peta Kepadatan Pengunjung: Ketahui Sebelum Anda Pergi</string>
 
-    <string name="text_one_splash">Tetap mendapat informasi tentang tingkat kepadatan pengunjung secara real-time di destinasi populer di Bali. Rencanakan kunjungan Anda dengan wawasan terbaru, memastikan pengalaman yang nyaman dan menyenangkan. Hindari tempat yang terlalu ramai dan temukan alternatif yang lebih tenang dengan mudah!</string>
-    <string name="text_two_splash">Temukan destinasi yang kurang dikenal di Bali yang menawarkan pengalaman unik jauh dari keramaian. Dukung pariwisata berkelanjutan dengan mengunjungi lokasi-lokasi yang tenang dan kaya budaya ini. Jelajahi sisi baru Bali sambil mendukung komunitas lokal!</string>
-    <string name="text_three_splash">Lihat visualisasi real-time kepadatan pengunjung di berbagai lokasi di Bali. Buat keputusan yang tepat untuk mengunjungi tempat wisata saat tidak terlalu ramai, untuk pengalaman yang lebih menyenangkan. Hindari keramaian dan jelajahi Bali dengan nyaman!</string>
+    <string name="text_one_splash">Tetap mendapat informasi tentang tingkat kepadatan pengunjung secara real-time di destinasi populer di Bali. </string>
+    <string name="text_two_splash">Temukan destinasi yang kurang dikenal di Bali yang menawarkan pengalaman unik jauh dari keramaian.</string>
+    <string name="text_three_splash">Lihat visualisasi real-time kepadatan pengunjung di berbagai lokasi di Bali. Buat keputusan yang tepat untuk mengunjungi tempat wisata saat tidak terlalu ramai, untuk pengalaman yang lebih menyenangkan.</string>
 
     <!--    Profile-->
     <string name="our_teams">Tim Kami</string>
