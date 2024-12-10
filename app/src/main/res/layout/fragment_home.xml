@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/hello"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textColor="@color/gray"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"

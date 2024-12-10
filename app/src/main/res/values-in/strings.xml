@@ -22,8 +22,8 @@
     <string name="about">Tentang Kami</string>
     <string name="info_app">Informasi Aplikasi</string>
 
-    <!--Favorite item (item_fav)-->
-    <string name="dest_fav">Ini adalah Destinasi Favorit Anda</string>
+    <!--    Favorite item (item_fav)-->
+    <string name="dest_fav">Ini Destinasi Favorit Anda</string>
     <string name="dest_name">Nama Destinasi</string>
     <string name="dest_loc">Lokasi Destinasi</string>
     <string name="dest_crowd">Kepadatan Destinasi</string>
@@ -32,51 +32,51 @@
     <string name="rating">penilaian</string>
     <string name="user_count">(jumlah pengguna)</string>
 
-    <!--Searching-->
+    <!--    Searching-->
     <string name="search">Cari</string>
     <string name="sub_search">Cari Impian Anda</string>
     <string name="text_result">Hasil Pencarian</string>
 
-    <!--Home-->
-    <string name="welcome">Selamat Datang</string>
+    <!--    Home-->
+    <string name="welcome">Selamat datang</string>
     <string name="welcomeToApp">Selamat datang di CrowdWise Bali!</string>
     <string name="titlePrediction">Coba prediksi destinasi!</string>
-    <string name="titleListObject">Daftar Destinasi</string>
+    <string name="titleListObject">Objek Destinasi</string>
     <string name="titleRecommendation">Rekomendasi untuk Anda</string>
     <string name="lodging">Penginapan</string>
     <string name="poi">Tempat Menarik</string>
-    <string name="ens">Fasilitas</string>
-    <string name="hello">Hallo,</string>
+    <string name="ens">Tempat</string>
+    <string name="hello">Halo,</string>
     <string name="location">Lokasi</string>
 
-    <!--Detail Object Destination-->
+    <!--    Detail Object Destination-->
     <string name="image_dest">Gambar Destinasi</string>
     <string name="maps">Peta</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Kata Sandi</string>
-    <string name="action_sign_in">Masuk atau Daftar</string>
+    <string name="action_sign_in">Masuk atau daftar</string>
     <string name="action_sign_in_short">Masuk</string>
-    <string name="invalid_username">Nama pengguna tidak valid</string>
+    <string name="invalid_username">Username tidak valid</string>
     <string name="invalid_password">Kata sandi harus lebih dari 5 karakter</string>
     <string name="login_failed">"Login gagal"</string>
     <string name="date_pick">Pilih Tanggal</string>
     <string name="prediction">Prediksi Kepadatan!</string>
 
-    <!--Splash-->
-    <string name="text_one_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
-    <string name="text_two_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
-    <string name="text_three_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
+    <!--    Splash-->
+    <string name="title_one_splash">Pembaruan Kepadatan Pengunjung Secara Langsung</string>
+    <string name="title_two_splash">Temukan Permata Tersembunyi: Jelajahi Tempat Rahasia Bali</string>
+    <string name="title_three_splash">Peta Kepadatan Pengunjung: Ketahui Sebelum Anda Pergi</string>
 
-    <string name="title_one_splash">Menampilkan tingkat kepadatan pengunjung secara langsung di berbagai destinasi wisata di Bali</string>
-    <string name="title_two_splash">Menyoroti lokasi-lokasi yang kurang dikenal untuk dijelajahi, mendorong pariwisata yang berkelanjutan</string>
-    <string name="title_three_splash">Memvisualisasikan kepadatan pengunjung di berbagai lokasi</string>
+    <string name="text_one_splash">Tetap mendapat informasi tentang tingkat kepadatan pengunjung secara real-time di destinasi populer di Bali. Rencanakan kunjungan Anda dengan wawasan terbaru, memastikan pengalaman yang nyaman dan menyenangkan. Hindari tempat yang terlalu ramai dan temukan alternatif yang lebih tenang dengan mudah!</string>
+    <string name="text_two_splash">Temukan destinasi yang kurang dikenal di Bali yang menawarkan pengalaman unik jauh dari keramaian. Dukung pariwisata berkelanjutan dengan mengunjungi lokasi-lokasi yang tenang dan kaya budaya ini. Jelajahi sisi baru Bali sambil mendukung komunitas lokal!</string>
+    <string name="text_three_splash">Lihat visualisasi real-time kepadatan pengunjung di berbagai lokasi di Bali. Buat keputusan yang tepat untuk mengunjungi tempat wisata saat tidak terlalu ramai, untuk pengalaman yang lebih menyenangkan. Hindari keramaian dan jelajahi Bali dengan nyaman!</string>
 
-    <!--Profile-->
+    <!--    Profile-->
     <string name="our_teams">Tim Kami</string>
-    <string name="ml_team">Machine Learning Teams</string>
-    <string name="md_team">Mobile Development Teams</string>
-    <string name="cc_team">Cloud Computing Teams</string>
+    <string name="ml_team">Tim Pembelajaran Mesin</string>
+    <string name="md_team">Tim Pengembangan Mobile</string>
+    <string name="cc_team">Tim Komputasi Awan</string>
     <string name="cc_1">I Gede Hari Kresna Wiyasa</string>
     <string name="cc_2">Ida Bagus Made Wiguna Tedja Sukmana</string>
     <string name="ml_1">Devon Vivian Gunawan</string>
@@ -84,26 +84,27 @@
     <string name="ml_3">Ni Made Ayu Pranasanthi Dewi</string>
     <string name="md_0">Gagas Pradipta Jatmiko</string>
     <string name="md_1">Lusia Elvira Sue Sare</string>
+    <string name="logout">Keluar</string>
 
     <string name="title_theme">Tema</string>
     <string name="title_language">Bahasa</string>
     <string name="title_about">Tentang</string>
     <string name="title_feature">Fitur</string>
-    <string name="title_one_prof">Kepadatan Pengunjung Secara Langsung</string>
+    <string name="title_one_prof">Kepadatan Pengunjung Secara Real-Time</string>
     <string name="title_two_prof">Rekomendasi Tempat Tersembunyi</string>
     <string name="title_three_prof">Integrasi Peta</string>
 
     <string name="teks_about">Tentang Kami</string>
     <string name="teks_info">Informasi Aplikasi</string>
-    <string name="teks_theme">Ubah Tema</string>
-    <string name="teks_language">Ubah Bahasa</string>
+    <string name="teks_theme">Ganti Tema</string>
+    <string name="teks_language">Ganti Bahasa</string>
     <string name="teks_one_prof">Menampilkan tingkat kepadatan pengunjung secara langsung di berbagai destinasi wisata di Bali</string>
-    <string name="teks_two_prof">Menyoroti lokasi-lokasi yang kurang dikenal untuk dijelajahi, mendorong pariwisata yang berkelanjutan</string>
-    <string name="teks_three_prof">Memvisualisasikan kepadatan pengunjung di berbagai lokasi</string>
+    <string name="teks_two_prof">Menyoroti lokasi-lokasi yang kurang dikenal untuk dijelajahi, mendorong pariwisata berkelanjutan</string>
+    <string name="teks_three_prof">Visualisasi kepadatan pengunjung di berbagai lokasi</string>
 
-    <string name="teks_app">CrowdWise Bali adalah aplikasi mobile inovatif yang bertujuan untuk mengurangi kepadatan di destinasi wisata populer di Bali. Aplikasi ini memberikan data kepadatan pengunjung secara real-time, memungkinkan wisatawan membuat keputusan yang lebih bijak dan menemukan tempat yang lebih sepi.</string>
+    <string name="teks_app">CrowdWise Bali adalah aplikasi mobile inovatif yang bertujuan untuk mengurangi kepadatan di destinasi wisata paling populer di Bali. Aplikasi ini menawarkan data kepadatan pengunjung secara real-time, memungkinkan wisatawan untuk membuat keputusan yang tepat dan menemukan tempat yang kurang ramai.</string>
 
-    <!--Button-->
+    <!--    Button-->
     <string name="button_back">Kembali</string>
     <string name="button_skip">Lewati</string>
     <string name="button_next">Selanjutnya</string>
