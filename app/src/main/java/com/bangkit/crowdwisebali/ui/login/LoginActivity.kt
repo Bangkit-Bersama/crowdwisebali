@@ -4,16 +4,22 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.credentials.CredentialManager
 import androidx.credentials.CustomCredential
 import androidx.credentials.GetCredentialRequest
 import androidx.credentials.GetCredentialResponse
 import androidx.credentials.exceptions.GetCredentialException
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.bangkit.crowdwisebali.BuildConfig
 import com.bangkit.crowdwisebali.MainActivity
 import com.bangkit.crowdwisebali.R
+import com.bangkit.crowdwisebali.data.pref.SettingPreferences
+import com.bangkit.crowdwisebali.data.pref.dataStore
 import com.bangkit.crowdwisebali.databinding.ActivityLoginBinding
+import com.bangkit.crowdwisebali.ui.profile.ProfileFactory
+import com.bangkit.crowdwisebali.ui.profile.ProfileViewModel
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
@@ -29,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +50,17 @@ class LoginActivity : AppCompatActivity() {
         binding.signInButton.setOnClickListener {
             signIn()
         }
+
+        val pref = SettingPreferences.getInstance(dataStore)
+        profileViewModel = ViewModelProvider(this, ProfileFactory(pref))[ProfileViewModel::class.java]
+
+        profileViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
     }
 
     private fun signIn() {
@@ -53,18 +71,18 @@ class LoginActivity : AppCompatActivity() {
             .setServerClientId(BuildConfig.client_id)
             .build()
 
-        val request = GetCredentialRequest.Builder() //import from androidx.CredentialManager
+        val request = GetCredentialRequest.Builder()
             .addCredentialOption(googleIdOption)
             .build()
 
         lifecycleScope.launch {
             try {
-                val result: GetCredentialResponse = credentialManager.getCredential( //import from androidx.CredentialManager
+                val result: GetCredentialResponse = credentialManager.getCredential(
                     request = request,
                     context = this@LoginActivity,
                 )
                 handleSignIn(result)
-            } catch (e: GetCredentialException) { //import from androidx.CredentialManager
+            } catch (e: GetCredentialException) {
                 Log.d("Error", e.message.toString())
             }
         }

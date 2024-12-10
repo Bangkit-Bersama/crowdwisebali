@@ -51,9 +51,9 @@ class HomeViewModel : ViewModel() {
     }
 
     // Fetch recommendation data from API
-    fun fetchRecommendation(latitude: Double, longitude: Double, placeType: String) {
+    fun fetchRecommendation(latitude: Double, longitude: Double, placeType: String, token: String) {
         _isRecommendationLoading.value = true
-        val client = ApiConfig.getApiService().getRecommendation(latitude, longitude, placeType)
+        val client = ApiConfig.getApiService(token).getRecommendation(latitude, longitude, placeType)
         client.enqueue(object : Callback<RecommendationResponse> {
             override fun onResponse(
                 call: Call<RecommendationResponse>,

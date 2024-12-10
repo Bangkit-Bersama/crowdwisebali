@@ -35,6 +35,7 @@
     <!--Searching-->
     <string name="search">Cari</string>
     <string name="sub_search">Cari Impian Anda</string>
+    <string name="text_result">Hasil Pencarian</string>
 
     <!--Home-->
     <string name="welcome">Selamat Datang</string>
@@ -45,6 +46,8 @@
     <string name="lodging">Penginapan</string>
     <string name="poi">Tempat Menarik</string>
     <string name="ens">Fasilitas</string>
+    <string name="hello">Hallo,</string>
+    <string name="location">Lokasi</string>
 
     <!--Detail Object Destination-->
     <string name="image_dest">Gambar Destinasi</string>

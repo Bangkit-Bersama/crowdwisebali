@@ -29,7 +29,7 @@ class DetailViewModel(private val repository: FavoriteRepository) : ViewModel() 
         _isDetailLoading.value = true
         viewModelScope.launch {
             try {
-                val apiService = ApiConfig.getApiService()
+                val apiService = ApiConfig.getApiService(token = "")
                 val language = Locale.getDefault().language
                 val response: DetailPlacesResponse = apiService.getDetailPlace(placesId, language)
 

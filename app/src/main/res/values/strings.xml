@@ -35,6 +35,7 @@
     <!--    Searching-->
     <string name="search">Search</string>
     <string name="sub_search">Search Your Dreams</string>
+    <string name="text_result">Search Result</string>
 
     <!--    Home-->
     <string name="welcome">Welcome</string>
@@ -45,6 +46,8 @@
     <string name="lodging">Lodging</string>
     <string name="poi">Point of Interest</string>
     <string name="ens">Establishment</string>
+    <string name="hello">Hello,</string>
+    <string name="location">Location</string>
 
     <!--    Detail Object Destination-->
     <string name="image_dest">Image Destination</string>

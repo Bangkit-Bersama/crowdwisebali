@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +25,8 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import java.io.IOException
+import java.util.Locale
 
 class HomeFragment : Fragment() {
 
@@ -159,6 +163,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun getMyLastLocation() {
+        Log.d("HomeFragment", "getMyLastLocation called")
+
         if (checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
             checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
         ) {
@@ -166,13 +172,53 @@ class HomeFragment : Fragment() {
                 if (location != null) {
                     val latitude: Double = location.latitude
                     val longitude: Double = location.longitude
+                    Log.d("HomeFragment", "Location obtained: Latitude=$latitude, Longitude=$longitude")
 
-                    homeViewModel.fetchRecommendation(latitude, longitude, "restaurant") // Misalnya, "restaurant" untuk placeType
+                    val geocoder = Geocoder(requireContext(), Locale.getDefault())
+                    try {
+                        @Suppress("DEPRECATION") val addresses = geocoder.getFromLocation(latitude, longitude, 1)
+                        if (!addresses.isNullOrEmpty()) {
+                            val address = addresses[0]
+                            val locationName = address.getAddressLine(0)
+                            Log.d("HomeFragment", "Location address: $locationName")
+                            binding.tvLocation.text = locationName
+                        } else {
+                            Log.d("HomeFragment", "No addresses found")
+                            binding.tvLocation.text = "Location not found"
+                        }
+                    } catch (e: IOException) {
+                        Log.e("HomeFragment", "Geocoder failed", e)
+                        Toast.makeText(requireContext(), "Gagal mendapatkan alamat", Toast.LENGTH_SHORT).show()
+                    }
+
+                    val mUser = FirebaseAuth.getInstance().currentUser
+                    mUser?.getIdToken(true)?.addOnCompleteListener { tokenTask ->
+                        if (tokenTask.isSuccessful) {
+                            val token = tokenTask.result?.token
+                            Log.d("HomeFragment", "Firebase token obtained: $token")
+
+                            if (token != null) {
+                                Log.d("HomeFragment", "Fetching recommendations with token...")
+                                homeViewModel.fetchRecommendation(latitude, longitude, "restaurant", token)
+
+                                // Tambahkan log konfirmasi pengiriman token ke backend
+                                Log.i("HomeFragment", "Token sent to ViewModel: $token")
+                            } else {
+                                Log.w("HomeFragment", "Firebase token is null")
+                            }
+                        } else {
+                            Log.e("HomeFragment", "Failed to get Firebase token", tokenTask.exception)
+                        }
+                    } ?: Log.e("HomeFragment", "User is null, cannot retrieve token")
                 } else {
+                    Log.d("HomeFragment", "Location is null")
                     Toast.makeText(requireContext(), "Location not found", Toast.LENGTH_SHORT).show()
                 }
+            }.addOnFailureListener { e ->
+                Log.e("HomeFragment", "Failed to get last location", e)
             }
         } else {
+            Log.d("HomeFragment", "Permissions not granted, requesting permissions")
             requestPermissionLauncher.launch(
                 arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
@@ -181,5 +227,4 @@ class HomeFragment : Fragment() {
             )
         }
     }
-
 }
