@@ -38,6 +38,7 @@
             android:layout_marginEnd="16dp"
             android:text="@string/dest_name"
             android:textSize="22sp"
+            android:textColor="@color/gray"
             android:textStyle="bold"
             app:layout_goneMarginStart="24dp"
             android:layout_marginTop="12dp"
@@ -62,6 +63,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="12dp"
+            android:textColor="@color/gray"
             android:text="@string/dest_loc"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
@@ -83,6 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/rating"
+            android:textColor="@color/gray"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2"/>
@@ -93,6 +96,7 @@
             android:layout_height="wrap_content"
             android:text="@string/user_count"
             android:layout_marginStart="8dp"
+            android:textColor="@color/gray"
             app:layout_constraintStart_toEndOf="@+id/rating"
             app:layout_constraintTop_toTopOf="@+id/rating"/>
 
@@ -105,6 +109,7 @@
             android:layout_marginEnd="32dp"
             android:text="@string/titlePrediction"
             android:textStyle="bold"
+            android:textColor="@color/gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -128,6 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:textColor="@color/gray"
                 android:hint="@string/date_pick"/>
         </com.google.android.material.textfield.TextInputLayout>
 

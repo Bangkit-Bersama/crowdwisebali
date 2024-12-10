@@ -24,7 +24,7 @@
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.CrowdWiseBali.No.Bar">
+            android:theme="@style/Theme.CrowdWiseBali.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

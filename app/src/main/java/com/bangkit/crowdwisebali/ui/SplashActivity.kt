@@ -15,11 +15,18 @@ import com.bangkit.crowdwisebali.R
 
 import android.animation.ValueAnimator
 import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModelProvider
+import com.bangkit.crowdwisebali.data.pref.SettingPreferences
+import com.bangkit.crowdwisebali.data.pref.dataStore
 import com.bangkit.crowdwisebali.ui.onboarding.OnBoardingActivity
+import com.bangkit.crowdwisebali.ui.profile.ProfileFactory
+import com.bangkit.crowdwisebali.ui.profile.ProfileViewModel
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var imageView: ImageView
     private lateinit var progressBar: ProgressBar
+    private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +55,17 @@ class SplashActivity : AppCompatActivity() {
             }
             finish()
         }, 3000)
+
+        val pref = SettingPreferences.getInstance(dataStore)
+        profileViewModel = ViewModelProvider(this, ProfileFactory(pref))[ProfileViewModel::class.java]
+
+        profileViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
     }
 
     private fun playAnimation() {

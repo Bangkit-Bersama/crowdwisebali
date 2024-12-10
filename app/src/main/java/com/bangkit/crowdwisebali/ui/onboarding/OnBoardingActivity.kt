@@ -5,16 +5,23 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bangkit.crowdwisebali.MainActivity
 import com.bangkit.crowdwisebali.R
+import com.bangkit.crowdwisebali.data.pref.SettingPreferences
+import com.bangkit.crowdwisebali.data.pref.dataStore
+import com.bangkit.crowdwisebali.ui.profile.ProfileFactory
+import com.bangkit.crowdwisebali.ui.profile.ProfileViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 
 class OnBoardingActivity : AppCompatActivity() {
 
     private lateinit var viewPager: ViewPager2
+    private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,5 +44,16 @@ class OnBoardingActivity : AppCompatActivity() {
                 }
             }
         })
+
+        val pref = SettingPreferences.getInstance(dataStore)
+        profileViewModel = ViewModelProvider(this, ProfileFactory(pref))[ProfileViewModel::class.java]
+
+        profileViewModel.getThemeSettings().observe(this) { isDarkModeActive: Boolean ->
+            if (isDarkModeActive) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
     }
 }
