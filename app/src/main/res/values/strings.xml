@@ -61,13 +61,13 @@
     <string name="prediction">Predict the Crowd!</string>
 
     <!--    Splash-->
-    <string name="text_one_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
-    <string name="text_two_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
-    <string name="text_three_splash">TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView TextView</string>
+    <string name="title_one_splash">Live Crowd Updates</string>
+    <string name="title_two_splash">Discover Hidden Gems: Explore Bali Secret Spots</string>
+    <string name="title_three_splash">Crowd Density Map: Know Before You Go</string>
 
-    <string name="title_one_splash">Displays live crowd levels at various tourist destinations across Bali</string>
-    <string name="title_two_splash">Highlights lesser-known locations to explore, encouraging sustainable tourism</string>
-    <string name="title_three_splash">Visualizes crowd density across locations</string>
+    <string name="text_one_splash">Stay informed about real-time crowd levels at popular destinations across Bali. Plan your visits better with up-to-date insights, ensuring a comfortable and enjoyable experience. Avoid overcrowded spots and discover serene alternatives with ease!</string>
+    <string name="text_two_splash">Uncover lesser-known destinations in Bali that offer unique experiences away from the crowds. Embrace sustainable tourism by visiting these serene and culturally rich locations. Explore a new side of Bali while supporting local communities!</string>
+    <string name="text_three_splash">See real-time visualizations of crowd density across various locations in Bali. Make informed decisions to visit attractions when they’re less crowded for a more enjoyable experience. Avoid the rush and explore Bali comfortably!</string>
 
     <!--    Profile-->
     <string name="our_teams">Our Teams</string>

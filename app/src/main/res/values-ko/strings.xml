@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">CrowdWiseBali</string>
+
+    <!-- 메뉴 제목 -->
+    <string name="title_home">홈</string>
+    <string name="title_search">검색</string>
+    <string name="title_favorite">즐겨찾기</string>
+    <string name="title_profile">프로필</string>
+
+    <!-- 환영 -->
+    <string name="titleWelcome">"CrowdWise Bali에 오신 것을 환영합니다, 새로운 이야기를 발견하세요!"</string>
+    <string name="signInWithGoogle">구글로 로그인</string>
+
+    <!-- 설정 -->
+    <string name="profile_picture">프로필 사진</string>
+    <string name="fab_edit_profile">프로필 편집</string>
+    <string name="name">이름</string>
+    <string name="email">이메일</string>
+    <string name="sub_settings">설정</string>
+    <string name="theme">테마</string>
+    <string name="enable_theme">테마 활성화</string>
+    <string name="about">회사 소개</string>
+    <string name="info_app">앱 정보</string>
+
+    <!-- 즐겨찾기 항목 (item_fav) -->
+    <string name="dest_fav">당신의 즐겨찾는 목적지</string>
+    <string name="dest_name">목적지 이름</string>
+    <string name="dest_loc">목적지 위치</string>
+    <string name="dest_crowd">목적지 혼잡도</string>
+    <string name="save_favorite">즐겨찾기에 저장</string>
+
+    <string name="rating">평점</string>
+    <string name="user_count">(사용자 수)</string>
+
+    <!-- 검색 -->
+    <string name="search">검색</string>
+    <string name="sub_search">당신의 꿈을 찾으세요</string>
+
+    <!-- 홈 -->
+    <string name="welcome">환영합니다</string>
+    <string name="welcomeToApp">CrowdWise Bali에 오신 것을 환영합니다!</string>
+    <string name="titlePrediction">목적지 혼잡도를 예측해 보세요!</string>
+    <string name="titleListObject">목적지 목록</string>
+    <string name="titleRecommendation">당신을 위한 추천</string>
+    <string name="lodging">숙소</string>
+    <string name="poi">관광지</string>
+    <string name="ens">시설</string>
+
+    <!-- 목적지 상세 -->
+    <string name="image_dest">목적지 이미지</string>
+    <string name="maps">지도</string>
+    <string name="title_activity_login">로그인 화면</string>
+    <string name="prompt_email">이메일</string>
+    <string name="prompt_password">비밀번호</string>
+    <string name="action_sign_in">로그인 또는 가입</string>
+    <string name="action_sign_in_short">로그인</string>
+    <string name="invalid_username">유효하지 않은 사용자 이름</string>
+    <string name="invalid_password">비밀번호는 5자 이상이어야 합니다</string>
+    <string name="login_failed">"로그인 실패"</string>
+    <string name="date_pick">날짜 선택</string>
+    <string name="prediction">혼잡도 예측!</string>
+
+    <!-- 스플래시 -->
+    <string name="title_one_splash">실시간 혼잡도 업데이트</string>
+    <string name="title_two_splash">숨겨진 명소 발견: 발리의 비밀 장소 탐험</string>
+    <string name="title_three_splash">혼잡도 지도: 떠나기 전에 알아보세요</string>
+
+    <string name="text_one_splash">발리의 인기 관광지에서 실시간 혼잡도를 확인하여 쾌적하고 즐거운 경험을 제공합니다. 혼잡한 장소를 피하고 조용한 장소를 쉽게 발견하세요!</string>
+    <string name="text_two_splash">발리의 덜 알려진 장소를 발견하여 관광객이 적은 곳에서 유니ーク한 경험을 즐기세요. 지역 사회를 지원하는 관광을 촉진하세요!</string>
+    <string name="text_three_splash">발리의 다양한 장소에서 실시간 혼잡도를 시각화하여 혼잡하지 않은 시간에 관광지를 방문하세요.</string>
+
+    <!-- 프로필 -->
+    <string name="our_teams">우리 팀</string>
+    <string name="ml_team">기계학습 팀</string>
+    <string name="md_team">모바일 개발 팀</string>
+    <string name="cc_team">클라우드 컴퓨팅 팀</string>
+    <string name="cc_1">이게 데이 해리 크레스나 위야사</string>
+    <string name="cc_2">이다 바구스 마데 위구나 테드자 수크마나</string>
+    <string name="ml_1">데본 비비안 구나완</string>
+    <string name="ml_2">게드 에카 푸트라 위자야</string>
+    <string name="ml_3">니 마데 아유 프라나산티 데위</string>
+    <string name="md_0">가가스 프라디프타 자트미코</string>
+    <string name="md_1">루시아 엘비라 수에 사레</string>
+    <string name="logout">로그아웃</string>
+
+    <string name="title_theme">테마</string>
+    <string name="title_language">언어</string>
+    <string name="title_about">소개</string>
+    <string name="title_feature">기능</string>
+    <string name="title_one_prof">실시간 혼잡도</string>
+    <string name="title_two_prof">숨겨진 장소 추천</string>
+    <string name="title_three_prof">혼잡도 지도 통합</string>
+
+    <string name="teks_about">우리에 대해</string>
+    <string name="teks_info">앱 정보</string>
+    <string name="teks_theme">테마 변경</string>
+    <string name="teks_language">언어 변경</string>
+    <string name="teks_one_prof">발리의 다양한 관광지에서 혼잡도를 표시합니다.</string>
+    <string name="teks_two_prof">덜 알려진 장소를 강조하여 지속 가능한 관광을 촉진합니다.</string>
+    <string name="teks_three_prof">다양한 장소에서의 혼잡도를 시각화합니다.</string>
+
+    <string name="teks_app">CrowdWise Bali는 발리의 가장 인기 있는 관광지에서 실시간으로 혼잡도를 추적하고, 관광객들이 혼잡하지 않은 곳을 선택할 수 있도록 돕는 모바일 앱입니다.</string>
+
+    <!-- 버튼 -->
+    <string name="button_back">뒤로</string>
+    <string name="button_skip">건너뛰기</string>
+    <string name="button_next">다음</string>
+
+</resources>

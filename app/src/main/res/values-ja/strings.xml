@@ -1,0 +1,109 @@
+<resources>
+    <string name="app_name">CrowdWiseBali</string>
+
+    <!-- メニュータイトル -->
+    <string name="title_home">ホーム</string>
+    <string name="title_search">検索</string>
+    <string name="title_favorite">お気に入り</string>
+    <string name="title_profile">プロフィール</string>
+
+    <!-- ようこそ -->
+    <string name="titleWelcome">"ようこそ <font color="#3498DB">CrowdWise Bali</font> へ、 新しい物語を発見しよう！"</string>
+    <string name="signInWithGoogle">Googleでサインイン</string>
+
+    <!-- 設定 -->
+    <string name="profile_picture">プロフィール写真</string>
+    <string name="fab_edit_profile">プロフィールを編集</string>
+    <string name="name">名前</string>
+    <string name="email">メール</string>
+    <string name="sub_settings">設定</string>
+    <string name="theme">テーマ</string>
+    <string name="enable_theme">テーマを有効にする</string>
+    <string name="about">私たちについて</string>
+    <string name="info_app">アプリ情報</string>
+
+    <!-- お気に入りアイテム (item_fav) -->
+    <string name="dest_fav">お気に入りの目的地</string>
+    <string name="dest_name">目的地名</string>
+    <string name="dest_loc">目的地の場所</string>
+    <string name="dest_crowd">目的地の混雑度</string>
+    <string name="save_favorite">お気に入りに保存</string>
+
+    <string name="rating">評価</string>
+    <string name="user_count">(ユーザー数)</string>
+
+    <!-- 検索 -->
+    <string name="search">検索</string>
+    <string name="sub_search">あなたの夢を検索</string>
+
+    <!-- ホーム -->
+    <string name="welcome">ようこそ</string>
+    <string name="welcomeToApp">CrowdWise Baliへようこそ！</string>
+    <string name="titlePrediction">目的地を予測してみてください！</string>
+    <string name="titleListObject">目的地リスト</string>
+    <string name="titleRecommendation">あなたへのおすすめ</string>
+    <string name="lodging">宿泊施設</string>
+    <string name="poi">観光地</string>
+    <string name="ens">施設</string>
+
+    <!-- 詳細目的地 -->
+    <string name="image_dest">目的地の画像</string>
+    <string name="maps">地図</string>
+    <string name="title_activity_login">ログインアクティビティ</string>
+    <string name="prompt_email">メール</string>
+    <string name="prompt_password">パスワード</string>
+    <string name="action_sign_in">サインインまたは登録</string>
+    <string name="action_sign_in_short">サインイン</string>
+    <string name="invalid_username">無効なユーザー名</string>
+    <string name="invalid_password">パスワードは5文字以上でなければなりません</string>
+    <string name="login_failed">"ログインに失敗しました"</string>
+    <string name="date_pick">日付を選択</string>
+    <string name="prediction">混雑予測！</string>
+
+    <!-- スプラッシュ -->
+    <string name="title_one_splash">ライブの混雑状況の更新</string>
+    <string name="title_two_splash">隠れた宝石を発見：バリの秘密のスポットを探索</string>
+    <string name="title_three_splash">混雑マップ：行く前に知っておこう</string>
+
+    <string name="text_one_splash">バリの人気観光地でのリアルタイムの混雑度を把握して、快適で楽しい体験を提供します。混雑している場所を避け、静かな場所を簡単に発見できます！</string>
+    <string name="text_two_splash">バリのあまり知られていない場所を発見し、観光客が少ない場所でユニークな体験を楽しみましょう。</string>
+    <string name="text_three_splash">バリのさまざまな場所での混雑度のリアルタイム視覚化を見て、混雑していない時間に観光地を訪れるようにしましょう。</string>
+
+    <!-- プロフィール -->
+    <string name="our_teams">私たちのチーム</string>
+    <string name="ml_team">機械学習チーム</string>
+    <string name="md_team">モバイル開発チーム</string>
+    <string name="cc_team">クラウドコンピューティングチーム</string>
+    <string name="cc_1">I Gede Hari Kresna Wiyasa</string>
+    <string name="cc_2">Ida Bagus Made Wiguna Tedja Sukmana</string>
+    <string name="ml_1">Devon Vivian Gunawan</string>
+    <string name="ml_2">Gede Eka Putra Wijaya</string>
+    <string name="ml_3">Ni Made Ayu Pranasanthi Dewi</string>
+    <string name="md_0">Gagas Pradipta Jatmiko</string>
+    <string name="md_1">Lusia Elvira Sue Sare</string>
+    <string name="logout">ログアウト</string>
+
+    <string name="title_theme">テーマ</string>
+    <string name="title_language">言語</string>
+    <string name="title_about">について</string>
+    <string name="title_feature">特徴</string>
+    <string name="title_one_prof">リアルタイムの訪問者密度</string>
+    <string name="title_two_prof">隠れた宝石の推薦</string>
+    <string name="title_three_prof">マップの統合</string>
+
+    <string name="teks_about">私たちについて</string>
+    <string name="teks_info">アプリ情報</string>
+    <string name="teks_theme">テーマを変更</string>
+    <string name="teks_language">言語を変更</string>
+    <string name="teks_one_prof">バリの観光地での訪問者の密度をリアルタイムで表示</string>
+    <string name="teks_two_prof">知られていない場所を強調し、持続可能な観光を促進します</string>
+    <string name="teks_three_prof">訪問地の混雑度を視覚化</string>
+
+    <string name="teks_app">CrowdWise Baliは、バリの観光地での混雑を軽減することを目的とした革新的なモバイルアプリケーションです。リアルタイムの訪問者密度データを提供し、観光客が情報に基づいて意思決定を行い、混雑していないスポットを発見することができます。</string>
+
+    <!-- ボタン -->
+    <string name="button_back">戻る</string>
+    <string name="button_skip">スキップ</string>
+    <string name="button_next">次へ</string>
+
+</resources>
