@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.CrowdWiseBali.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.CrowdWiseBali.No.Bar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Tambahkan atribut lainnya jika diperlukan -->
         <item name="android:windowIsTranslucent">true</item>
     </style>

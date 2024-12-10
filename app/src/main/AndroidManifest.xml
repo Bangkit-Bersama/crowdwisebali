@@ -19,12 +19,12 @@
         <activity
             android:name=".ui.onboarding.OnBoardingActivity"
             android:exported="false"
-            android:theme="@style/Theme.CrowdWiseBali.Splash"/>
+            android:theme="@style/Theme.CrowdWiseBali.No.Bar"/>
         <!-- Splash Activity -->
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.CrowdWiseBali.Splash">
+            android:theme="@style/Theme.CrowdWiseBali.No.Bar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,23 +33,25 @@
         </activity>
         <activity
             android:name=".ui.profile.InfoActivity"
+            android:theme="@style/Theme.CrowdWiseBali.No.Bar"
             android:exported="false" />
         <activity
             android:name=".ui.profile.AboutUsActivity"
+            android:theme="@style/Theme.CrowdWiseBali.No.Bar"
             android:exported="false" />
 
-<!--        <meta-data-->
-<!--            android:name="com.google.android.geo.API_KEY"-->
-<!--            android:value="${apiKey}" />-->
+        <!--        <meta-data-->
+        <!--            android:name="com.google.android.geo.API_KEY"-->
+        <!--            android:value="${apiKey}" />-->
 
-<!--        <meta-data-->
-<!--            android:name="com.google.android.client_id"-->
-<!--            android:value="${client_id}" />-->
+        <!--        <meta-data-->
+        <!--            android:name="com.google.android.client_id"-->
+        <!--            android:value="${client_id}" />-->
 
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"
-            android:theme="@style/Theme.CrowdWiseBali.Splash"
+            android:theme="@style/Theme.CrowdWiseBali.No.Bar"
             android:label="@string/title_activity_login" />
         <activity
             android:name=".ui.detail.DetailActivity"

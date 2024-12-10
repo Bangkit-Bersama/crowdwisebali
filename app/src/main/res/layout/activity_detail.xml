@@ -37,7 +37,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="@string/dest_name"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold"
             app:layout_goneMarginStart="24dp"
             android:layout_marginTop="12dp"
@@ -97,14 +97,14 @@
             app:layout_constraintTop_toTopOf="@+id/rating"/>
 
         <TextView
+            android:id="@+id/titlePrediction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="32dp"
             android:text="@string/titlePrediction"
             android:textStyle="bold"
-            android:id="@+id/titlePrediction"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -136,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:text="@string/prediction"
             app:layout_constraintEnd_toEndOf="parent"
@@ -146,11 +146,11 @@
 
         <Button
             android:id="@+id/btn_maps"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="48dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
             android:layout_marginBottom="24dp"
             android:paddingStart="120dp"
             android:paddingEnd="120dp"
@@ -158,7 +158,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/prediction"/>
+            app:layout_constraintTop_toBottomOf="@+id/prediction" />
 
         <ProgressBar
             android:id="@+id/progressBarDetail"
