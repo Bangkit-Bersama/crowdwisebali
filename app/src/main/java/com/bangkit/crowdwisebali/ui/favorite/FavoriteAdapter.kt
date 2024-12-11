@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.crowdwisebali.BuildConfig
 import com.bangkit.crowdwisebali.BuildConfig.apiKey
 import com.bangkit.crowdwisebali.R
 import com.bangkit.crowdwisebali.data.local.FavoriteEntity

@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        supportActionBar?.hide()
 
         val pref = SettingPreferences.getInstance(dataStore)
         profileViewModel = ViewModelProvider(this, ProfileFactory(pref))[ProfileViewModel::class.java]

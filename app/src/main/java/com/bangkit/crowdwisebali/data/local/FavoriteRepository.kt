@@ -1,3 +1,4 @@
+
 package com.bangkit.crowdwisebali.data.local
 
 import android.annotation.SuppressLint
@@ -36,7 +37,7 @@ class FavoriteRepository(context: Context) {
         @Volatile
         private var instance: FavoriteRepository? = null
 
-       fun getInstance(context: Context): FavoriteRepository =
+        fun getInstance(context: Context): FavoriteRepository =
             instance ?: synchronized(this) {
                 instance ?: FavoriteRepository(context)
             }.also { instance = it }

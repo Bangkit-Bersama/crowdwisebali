@@ -58,6 +58,7 @@
     <string name="invalid_password">비밀번호는 5자 이상이어야 합니다</string>
     <string name="login_failed">"로그인 실패"</string>
     <string name="date_pick">날짜 선택</string>
+    <string name="time_pick">Choose Time</string>
     <string name="prediction">혼잡도 예측!</string>
 
     <!-- 스플래시 -->

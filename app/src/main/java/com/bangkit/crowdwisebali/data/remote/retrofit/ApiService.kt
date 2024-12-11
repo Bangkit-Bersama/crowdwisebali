@@ -1,5 +1,6 @@
 package com.bangkit.crowdwisebali.data.remote.retrofit
 
+import com.bangkit.crowdwisebali.data.local.FavoriteRepository
 import com.bangkit.crowdwisebali.data.remote.response.DetailPlacesResponse
 import com.bangkit.crowdwisebali.data.remote.response.RecommendationResponse
 import retrofit2.Call
@@ -21,5 +22,9 @@ interface ApiService {
         @Query("language") language: String
     ): DetailPlacesResponse
 
-
+//    @GET("recommendation")
+//    suspend fun suspendedSearchPlaces(
+//        @Query("id") id: Int,
+//        @Query("keyword") keyword: String
+//    ): FavoriteRepository
 }

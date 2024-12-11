@@ -58,6 +58,7 @@
     <string name="invalid_password">パスワードは5文字以上でなければなりません</string>
     <string name="login_failed">"ログインに失敗しました"</string>
     <string name="date_pick">日付を選択</string>
+    <string name="time_pick">Choose Time</string>
     <string name="prediction">混雑予測！</string>
 
     <!-- スプラッシュ -->

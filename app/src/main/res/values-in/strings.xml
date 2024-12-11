@@ -61,6 +61,7 @@
     <string name="invalid_password">Kata sandi harus lebih dari 5 karakter</string>
     <string name="login_failed">"Login gagal"</string>
     <string name="date_pick">Pilih Tanggal</string>
+    <string name="time_pick">Pilih Waktu</string>
     <string name="prediction">Prediksi Kepadatan!</string>
 
     <!--Splash-->

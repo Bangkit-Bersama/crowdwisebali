@@ -1,13 +1,8 @@
 package com.bangkit.crowdwisebali.ui.search
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bangkit.crowdwisebali.data.local.FavoriteRepository
 
-class SearchViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
-    }
-    val text: LiveData<String> = _text
+class SearchViewModel(private val favoriteRepository: FavoriteRepository) : ViewModel() {
+//    fun getSearchResult(keyword: String) = favoriteRepository.get
 }

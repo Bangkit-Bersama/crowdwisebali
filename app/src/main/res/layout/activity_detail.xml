@@ -2,7 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -100,9 +101,9 @@
             android:id="@+id/titlePrediction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
             android:text="@string/titlePrediction"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,20 +116,36 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="16dp"
-            android:alpha="1"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titlePrediction"
-            tools:alpha="100">
+            app:layout_constraintEnd_toStartOf="@+id/timeEditTextLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/ed_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/date_pick"/>
+                android:hint="@string/date_pick" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/timeEditTextLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintStart_toEndOf="@+id/dateEditTextLayout"
+            app:layout_constraintTop_toBottomOf="@+id/titlePrediction"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/dateEditTextLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ed_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/time_pick" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -144,21 +161,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dateEditTextLayout" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/result_prediction"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/prediction"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/result_prediction"/>
+
         <Button
             android:id="@+id/btn_maps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="24dp"
-            android:paddingStart="120dp"
-            android:paddingEnd="120dp"
             android:text="@string/maps"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/prediction" />
+            app:layout_constraintTop_toBottomOf="@id/result_prediction"
+            android:gravity="center_horizontal"/>
 
         <ProgressBar
             android:id="@+id/progressBarDetail"

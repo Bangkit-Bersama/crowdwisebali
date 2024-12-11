@@ -61,7 +61,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="date_pick">Choose Date</string>
+    <string name="time_pick">Choose Time</string>
     <string name="prediction">Predict the Crowd!</string>
+    <string name="result_prediction">Result Prediction</string>
 
     <!--    Splash-->
     <string name="title_one_splash">Live Crowd Updates</string>

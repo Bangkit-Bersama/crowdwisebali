@@ -156,10 +156,8 @@ class HomeFragment : Fragment() {
         }
 
     private fun checkPermission(permission: String): Boolean {
-        return ContextCompat.checkSelfPermission(
-            requireContext(),
-            permission
-        ) == PackageManager.PERMISSION_GRANTED
+        val safeContext = context ?: return false
+        return ContextCompat.checkSelfPermission(safeContext, permission) == PackageManager.PERMISSION_GRANTED
     }
 
     private fun getMyLastLocation() {
@@ -174,7 +172,9 @@ class HomeFragment : Fragment() {
                     val longitude: Double = location.longitude
                     Log.d("HomeFragment", "Location obtained: Latitude=$latitude, Longitude=$longitude")
 
-                    val geocoder = Geocoder(requireContext(), Locale.getDefault())
+                    // Pastikan context aman digunakan
+                    val safeContext = context ?: return@addOnSuccessListener
+                    val geocoder = Geocoder(safeContext, Locale.getDefault())
                     try {
                         @Suppress("DEPRECATION") val addresses = geocoder.getFromLocation(latitude, longitude, 1)
                         if (!addresses.isNullOrEmpty()) {
@@ -188,9 +188,10 @@ class HomeFragment : Fragment() {
                         }
                     } catch (e: IOException) {
                         Log.e("HomeFragment", "Geocoder failed", e)
-                        Toast.makeText(requireContext(), "Gagal mendapatkan alamat", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(safeContext, "Gagal mendapatkan alamat", Toast.LENGTH_SHORT).show()
                     }
 
+                    // Proses pengambilan token
                     val mUser = FirebaseAuth.getInstance().currentUser
                     mUser?.getIdToken(true)?.addOnCompleteListener { tokenTask ->
                         if (tokenTask.isSuccessful) {
@@ -212,7 +213,7 @@ class HomeFragment : Fragment() {
                     } ?: Log.e("HomeFragment", "User is null, cannot retrieve token")
                 } else {
                     Log.d("HomeFragment", "Location is null")
-                    Toast.makeText(requireContext(), "Location not found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Location not found", Toast.LENGTH_SHORT).show()
                 }
             }.addOnFailureListener { e ->
                 Log.e("HomeFragment", "Failed to get last location", e)
