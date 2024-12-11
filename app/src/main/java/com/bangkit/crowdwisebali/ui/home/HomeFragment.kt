@@ -180,14 +180,17 @@ class HomeFragment : Fragment() {
                         if (!addresses.isNullOrEmpty()) {
                             val address = addresses[0]
                             val subLocality = address.subLocality
-                            if (subLocality != null) {
-                                Log.d("HomeFragment", "Kecamatan: $subLocality")
-                                binding.tvLocation.text = subLocality
+                            val locality = address.locality
+                            val locationText = if (!subLocality.isNullOrEmpty() && !locality.isNullOrEmpty()) {
+                                "$subLocality, $locality"
+                            } else if (!locality.isNullOrEmpty()) {
+                                locality
                             } else {
-                                val locality = address.locality
-                                Log.d("HomeFragment", "Kota: $locality")
-                                binding.tvLocation.text = locality ?: "Lokasi tidak ditemukan"
+                                "Lokasi tidak ditemukan"
                             }
+
+                            Log.d("HomeFragment", "Lokasi: $locationText")
+                            binding.tvLocation.text = locationText
                         } else {
                             Log.d("HomeFragment", "No addresses found")
                             binding.tvLocation.text = "Lokasi tidak ditemukan"

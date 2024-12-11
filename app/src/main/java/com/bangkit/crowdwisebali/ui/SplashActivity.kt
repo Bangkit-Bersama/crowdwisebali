@@ -6,13 +6,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.ImageView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.bangkit.crowdwisebali.MainActivity
 import com.bangkit.crowdwisebali.R
-
 import android.animation.ValueAnimator
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatDelegate
@@ -32,25 +28,20 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        // Inisialisasi view
         imageView = findViewById(R.id.imageView)
         progressBar = findViewById(R.id.progressBar)
 
-        // SharedPreferences untuk mengecek apakah onboarding sudah selesai
         val sharedPref = getSharedPreferences("onboarding_pref", MODE_PRIVATE)
         val isOnboardingCompleted = sharedPref.getBoolean("onboarding_completed", false)
 
-        // Memulai animasi
         playAnimation()
         startLoadingAnimation()
 
-        // Pindah ke MainActivity setelah delay
+        @Suppress("DEPRECATION")
         Handler().postDelayed({
             if (isOnboardingCompleted) {
-                // Jika sudah selesai, buka MainActivity
                 startActivity(Intent(this, MainActivity::class.java))
             } else {
-                // Jika belum selesai, buka OnBoardingFragment
                 startActivity(Intent(this, OnBoardingActivity::class.java))
             }
             finish()
@@ -78,7 +69,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun startLoadingAnimation() {
         val animator = ValueAnimator.ofInt(0, 100)
-        animator.duration = 3000 // Sesuaikan durasi dengan Handler delay
+        animator.duration = 3000
         animator.addUpdateListener {
             val progress = it.animatedValue as Int
             progressBar.progress = progress

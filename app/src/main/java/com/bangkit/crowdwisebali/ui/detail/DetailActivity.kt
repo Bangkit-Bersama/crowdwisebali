@@ -1,10 +1,15 @@
 package com.bangkit.crowdwisebali.ui.detail
 
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
+import android.icu.util.Calendar
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.DatePicker
+import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bangkit.crowdwisebali.BuildConfig.apiKey
@@ -22,6 +27,8 @@ class DetailActivity : AppCompatActivity() {
 
     private var isFavorite: Boolean = false
     private lateinit var currentPlace: DataDetail
+
+    private val calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +93,36 @@ class DetailActivity : AppCompatActivity() {
         }
 
         setupFabFavorite(placeId)
+
+        binding.edDate.setOnClickListener {
+            val dateListener = DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int ->
+                val formattedDate = "${dayOfMonth}/${monthOfYear + 1}/$year"
+                binding.edDate.setText(formattedDate)
+            }
+
+            DatePickerDialog(
+                this,
+                dateListener,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+
+        binding.edTime.setOnClickListener {
+            val timeListener = TimePickerDialog.OnTimeSetListener { _: TimePicker, hourOfDay: Int, minute: Int ->
+                val formattedTime = String.format("%02d:%02d", hourOfDay, minute)
+                binding.edTime.setText(formattedTime)
+            }
+
+            TimePickerDialog(
+                this,
+                timeListener,
+                calendar.get(Calendar.HOUR_OF_DAY),
+                calendar.get(Calendar.MINUTE),
+                true
+            ).show()
+        }
     }
 
     private fun setupFabFavorite(placesId: String?) {

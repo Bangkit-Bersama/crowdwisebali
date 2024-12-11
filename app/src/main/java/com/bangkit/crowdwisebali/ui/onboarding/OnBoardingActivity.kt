@@ -30,11 +30,6 @@ class OnBoardingActivity : AppCompatActivity() {
         viewPager = findViewById(R.id.viewPager)
         val adapter = OnBoardingAdapter(this)
         viewPager.adapter = adapter
-
-//        val tabLayout = findViewById<com.google.android.material.tabs.TabLayout>(R.id.tabLayout)
-//        TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
-
-        // Simpan status onboarding selesai jika mencapai halaman terakhir
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 if (position == adapter.itemCount - 1) {
