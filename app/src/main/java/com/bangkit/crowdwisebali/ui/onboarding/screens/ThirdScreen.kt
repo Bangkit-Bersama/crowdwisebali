@@ -1,6 +1,8 @@
 package com.bangkit.crowdwisebali.ui.onboarding.screens
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -39,6 +41,8 @@ class ThirdScreen : Fragment() {
         }
 
         skip.setOnClickListener {
+            val sharedPref: SharedPreferences = requireActivity().getSharedPreferences("onboarding_pref", MODE_PRIVATE)
+            sharedPref.edit().putBoolean("onboarding_completed", true).apply()
             // Intent untuk membuka MainActivity
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)

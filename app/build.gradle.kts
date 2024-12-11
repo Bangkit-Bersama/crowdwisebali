@@ -25,8 +25,13 @@ android {
         val properties = Properties()
         properties.load(secretsFile.inputStream())
 
-        buildConfigField("String", "apiKey", "\"${properties.getProperty("apiKey") ?: "default_key"}\"")
-        buildConfigField("String", "client_id", "\"${properties.getProperty("client_id") ?: "default_client_id"}\"")
+        buildConfigField(
+            "String",
+            "baseApiUrl",
+            "\"${properties.getProperty("baseApiUrl") ?: ""}\""
+        )
+        buildConfigField("String", "apiKey", "\"${properties.getProperty("apiKey") ?: ""}\"")
+        buildConfigField("String", "client_id", "\"${properties.getProperty("client_id") ?: ""}\"")
     }
 
     buildTypes {
@@ -94,7 +99,7 @@ dependencies {
     implementation(libs.firebase.analytics)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
-    implementation (libs.androidx.credentials)
-    implementation( libs.androidx.credentials.play.services.auth)
-    implementation (libs.googleid)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
 }
