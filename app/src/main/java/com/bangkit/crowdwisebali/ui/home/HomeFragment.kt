@@ -172,26 +172,31 @@ class HomeFragment : Fragment() {
                     val longitude: Double = location.longitude
                     Log.d("HomeFragment", "Location obtained: Latitude=$latitude, Longitude=$longitude")
 
-                    // Pastikan context aman digunakan
                     val safeContext = context ?: return@addOnSuccessListener
                     val geocoder = Geocoder(safeContext, Locale.getDefault())
                     try {
-                        @Suppress("DEPRECATION") val addresses = geocoder.getFromLocation(latitude, longitude, 1)
+                        @Suppress("DEPRECATION")
+                        val addresses = geocoder.getFromLocation(latitude, longitude, 1)
                         if (!addresses.isNullOrEmpty()) {
                             val address = addresses[0]
-                            val locationName = address.getAddressLine(0)
-                            Log.d("HomeFragment", "Location address: $locationName")
-                            binding.tvLocation.text = locationName
+                            val subLocality = address.subLocality
+                            if (subLocality != null) {
+                                Log.d("HomeFragment", "Kecamatan: $subLocality")
+                                binding.tvLocation.text = subLocality
+                            } else {
+                                val locality = address.locality
+                                Log.d("HomeFragment", "Kota: $locality")
+                                binding.tvLocation.text = locality ?: "Lokasi tidak ditemukan"
+                            }
                         } else {
                             Log.d("HomeFragment", "No addresses found")
-                            binding.tvLocation.text = "Location not found"
+                            binding.tvLocation.text = "Lokasi tidak ditemukan"
                         }
                     } catch (e: IOException) {
                         Log.e("HomeFragment", "Geocoder failed", e)
                         Toast.makeText(safeContext, "Gagal mendapatkan alamat", Toast.LENGTH_SHORT).show()
                     }
 
-                    // Proses pengambilan token
                     val mUser = FirebaseAuth.getInstance().currentUser
                     mUser?.getIdToken(true)?.addOnCompleteListener { tokenTask ->
                         if (tokenTask.isSuccessful) {
@@ -202,7 +207,6 @@ class HomeFragment : Fragment() {
                                 Log.d("HomeFragment", "Fetching recommendations with token...")
                                 homeViewModel.fetchRecommendation(latitude, longitude, "restaurant", token)
 
-                                // Tambahkan log konfirmasi pengiriman token ke backend
                                 Log.i("HomeFragment", "Token sent to ViewModel: $token")
                             } else {
                                 Log.w("HomeFragment", "Firebase token is null")

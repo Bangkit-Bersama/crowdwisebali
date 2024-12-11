@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.crowdwisebali.databinding.FragmentFavoriteBinding
 import com.bangkit.crowdwisebali.ui.detail.DetailActivity
 import com.bangkit.crowdwisebali.R
@@ -35,12 +36,12 @@ class FavoriteFragment : Fragment() {
         favoriteViewModel = ViewModelProvider(this, FavoriteFactory.getInstance(requireContext()))[FavoriteViewModel::class.java]
         setDynamicSpanCount()
 
-        val displayMetrics = requireContext().resources.displayMetrics
-        val width = displayMetrics.widthPixels
-        val cardWidth = resources.getDimension(R.dimen.card_width)
-        val spanCount = (width / cardWidth).toInt()
+//        val displayMetrics = requireContext().resources.displayMetrics
+//        val width = displayMetrics.widthPixels
+//        val cardWidth = resources.getDimension(R.dimen.card_width)
+//        val spanCount = (width / cardWidth).toInt()
 
-        binding.rvItemFav.layoutManager = GridLayoutManager(requireContext(), spanCount)
+        binding.rvItemFav.layoutManager = LinearLayoutManager(requireContext())
         adapter = FavoriteAdapter { favorite ->
             val placeId = favorite.id
             val intent = Intent(context, DetailActivity::class.java).apply {
