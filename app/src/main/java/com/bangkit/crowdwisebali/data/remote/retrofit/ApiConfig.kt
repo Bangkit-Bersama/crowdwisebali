@@ -1,5 +1,6 @@
 package com.bangkit.crowdwisebali.data.remote.retrofit
 
+import com.bangkit.crowdwisebali.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,7 +24,7 @@ class ApiConfig {
                 .addInterceptor(authInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://crowdwisebali-api-staging-799097160817.asia-southeast2.run.app/api/v1/")
+                .baseUrl(BuildConfig.baseApiUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
