@@ -35,7 +35,7 @@ class DetailActivity : AppCompatActivity() {
 
     private val calendar = Calendar.getInstance()
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "DefaultLocale")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,26 +44,20 @@ class DetailActivity : AppCompatActivity() {
 
         sharedPreferenceManager = SharedPreferenceManager(this)
 
-        // Initialize ViewModel only after retrieving the token
         sharedPreferenceManager.getFirebaseAuthToken { token ->
             if (token != null) {
                 val repository = FavoriteRepository(application)
                 val factory = DetailFactory(repository, token)
 
-                // Initialize ViewModel here after the token is fetched
                 detailViewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
-                // Now you can safely fetch the place details
                 val placeId = intent.getStringExtra("place_id")
                 if (placeId != null) {
                     detailViewModel.fetchPlacesDetail(placeId)
                 } else {
                     Log.e("DetailActivity", "place_id is missing")
                 }
-
-                // Observe LiveData from the ViewModel
                 observeViewModel()
-
             } else {
                 Log.e("DetailActivity", "Failed to retrieve token")
             }
@@ -100,7 +94,6 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    // Observe the ViewModel's LiveData
     private fun observeViewModel() {
         detailViewModel.placesDetail.observe(this) { placesDetail ->
             Log.d("DetailActivity", "Received place details: $placesDetail")
@@ -160,7 +153,9 @@ class DetailActivity : AppCompatActivity() {
 
                 detailViewModel.predictionResult.observe(this) { predictionResult ->
                     if (predictionResult != null) {
-                        binding.resultPrediction.text = predictionResult.occupancy.toString()
+                        val occupancy = predictionResult.occupancy
+                        val category = categorizeOccupancy(occupancy)
+                        binding.resultPrediction.text = "$occupancy% ($category)"
                     } else {
                         Snackbar.make(binding.root, "Tidak ada hasil prediksi", Snackbar.LENGTH_LONG).show()
                     }
@@ -186,6 +181,16 @@ class DetailActivity : AppCompatActivity() {
             if (snackBarText != null) {
                 Snackbar.make(binding.root, snackBarText, Snackbar.LENGTH_LONG).show()
             }
+        }
+    }
+
+    private fun categorizeOccupancy(occupancy: Double): String {
+        return when {
+            occupancy in 0.0..25.0 -> "Sepi"
+            occupancy in 26.0..50.0 -> "Agak Ramai"
+            occupancy in 51.0..75.0 -> "Ramai"
+            occupancy in 76.0..100.0 -> "Sangat Ramai"
+            else -> "Tidak Valid"
         }
     }
 

@@ -35,6 +35,8 @@
     <!-- 검색 -->
     <string name="search">검색</string>
     <string name="sub_search">당신의 꿈을 찾으세요</string>
+    <string name="text_result">Search Result</string>
+
 
     <!-- 홈 -->
     <string name="welcome">환영합니다</string>
@@ -45,6 +47,8 @@
     <string name="lodging">숙소</string>
     <string name="poi">관광지</string>
     <string name="ens">시설</string>
+    <string name="hello">Hello,</string>
+    <string name="location">Location</string>
 
     <!-- 목적지 상세 -->
     <string name="image_dest">목적지 이미지</string>
@@ -60,6 +64,7 @@
     <string name="date_pick">날짜 선택</string>
     <string name="time_pick">Choose Time</string>
     <string name="prediction">혼잡도 예측!</string>
+    <string name="result_prediction">Result Prediction</string>
 
     <!-- 스플래시 -->
     <string name="title_one_splash">실시간 혼잡도 업데이트</string>

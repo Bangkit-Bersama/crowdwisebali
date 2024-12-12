@@ -15,6 +15,9 @@
     <color name="alice_blue">#f5fdff</color>
     <color name="gray">#6c757d</color>
 
+    <color name="switch_top">#70d3ea</color>
+    <color name="switch_back">#D2D7D9</color>
+
     <color name="red">#DE5753</color>
 
 </resources>

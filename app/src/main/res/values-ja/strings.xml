@@ -35,6 +35,7 @@
     <!-- 検索 -->
     <string name="search">検索</string>
     <string name="sub_search">あなたの夢を検索</string>
+    <string name="text_result">Search Result</string>
 
     <!-- ホーム -->
     <string name="welcome">ようこそ</string>
@@ -45,6 +46,8 @@
     <string name="lodging">宿泊施設</string>
     <string name="poi">観光地</string>
     <string name="ens">施設</string>
+    <string name="hello">Hello,</string>
+    <string name="location">Location</string>
 
     <!-- 詳細目的地 -->
     <string name="image_dest">目的地の画像</string>
@@ -60,6 +63,7 @@
     <string name="date_pick">日付を選択</string>
     <string name="time_pick">Choose Time</string>
     <string name="prediction">混雑予測！</string>
+    <string name="result_prediction">Result Prediction</string>
 
     <!-- スプラッシュ -->
     <string name="title_one_splash">ライブの混雑状況の更新</string>

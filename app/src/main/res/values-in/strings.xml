@@ -63,6 +63,7 @@
     <string name="date_pick">Pilih Tanggal</string>
     <string name="time_pick">Pilih Waktu</string>
     <string name="prediction">Prediksi Kepadatan!</string>
+    <string name="result_prediction">Hasil Prediksi</string>
 
     <!--    Splash-->
     <string name="title_one_splash">Pembaruan Kepadatan Pengunjung Secara Langsung</string>
