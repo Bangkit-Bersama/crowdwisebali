@@ -9,10 +9,13 @@ import kotlinx.coroutines.launch
 import androidx.lifecycle.viewModelScope
 import com.bangkit.crowdwisebali.data.local.FavoriteEntity
 import com.bangkit.crowdwisebali.data.local.FavoriteRepository
+import com.bangkit.crowdwisebali.data.pref.PredictionRequest
 import com.bangkit.crowdwisebali.data.remote.response.DataDetail
+import com.bangkit.crowdwisebali.data.remote.response.DataPrediction
+import com.bangkit.crowdwisebali.data.remote.response.PredictionResponse
 import java.util.Locale
 
-class DetailViewModel(private val repository: FavoriteRepository) : ViewModel() {
+class DetailViewModel(private val repository: FavoriteRepository, private val token: String) : ViewModel() {
     private val _placesDetail = MutableLiveData<DataDetail?>()
     val placesDetail: LiveData<DataDetail?> = _placesDetail
 
@@ -25,11 +28,20 @@ class DetailViewModel(private val repository: FavoriteRepository) : ViewModel() 
     private val _isFavorite = MutableLiveData<Boolean>()
     val isFavorite: LiveData<Boolean> = _isFavorite
 
+    private val _predictionResult = MutableLiveData<DataPrediction?>()
+    val predictionResult: LiveData<DataPrediction?> = _predictionResult
+
+    private val _isPredictionLoading = MutableLiveData<Boolean>()
+    val isPredictionLoading: LiveData<Boolean> = _isPredictionLoading
+
+    private val _statusPrediction = MutableLiveData<String>()
+    val statusPrediction: LiveData<String> = _statusPrediction
+
     fun fetchPlacesDetail(placesId: String) {
         _isDetailLoading.value = true
         viewModelScope.launch {
             try {
-                val apiService = ApiConfig.getApiService(token = "")
+                val apiService = ApiConfig.getApiService(token)
                 val language = Locale.getDefault().language
                 val response: DetailPlacesResponse = apiService.getDetailPlace(placesId, language)
 
@@ -44,6 +56,22 @@ class DetailViewModel(private val repository: FavoriteRepository) : ViewModel() 
                 _isDetailLoading.value = false
                 _snackBarText.value = "Failure: ${e.message}"
             }
+        }
+    }
+
+    suspend fun fetchPrediction(placeId: String, date: String, hour: Int){
+        _isPredictionLoading.value = true
+        try {
+            val predictionRequest = PredictionRequest(placeId, date, hour)
+            val apiService = ApiConfig.getApiService(token)
+            val response: PredictionResponse = apiService.sendPrediction(predictionRequest)
+
+            _isPredictionLoading.value = false
+
+            _predictionResult.value = response.data
+        }catch (e: Exception) {
+            _isPredictionLoading.value = false
+            _statusPrediction.value = "Failure: ${e.message}"
         }
     }
 

@@ -1,5 +1,6 @@
 package com.bangkit.crowdwisebali.ui.detail
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
@@ -12,45 +13,99 @@ import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.bangkit.crowdwisebali.BuildConfig.apiKey
 import com.bangkit.crowdwisebali.R
 import com.bangkit.crowdwisebali.data.local.FavoriteRepository
+import com.bangkit.crowdwisebali.data.pref.SharedPreferenceManager
 import com.bangkit.crowdwisebali.data.remote.response.DataDetail
 import com.bangkit.crowdwisebali.databinding.ActivityDetailBinding
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private lateinit var detailViewModel: DetailViewModel
+    private lateinit var sharedPreferenceManager: SharedPreferenceManager
 
     private var isFavorite: Boolean = false
     private lateinit var currentPlace: DataDetail
 
     private val calendar = Calendar.getInstance()
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val repository = FavoriteRepository(application)
-        val factory = DetailFactory(repository)
+        sharedPreferenceManager = SharedPreferenceManager(this)
 
-        detailViewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
+        // Initialize ViewModel only after retrieving the token
+        sharedPreferenceManager.getFirebaseAuthToken { token ->
+            if (token != null) {
+                val repository = FavoriteRepository(application)
+                val factory = DetailFactory(repository, token)
 
-        val placeId = intent.getStringExtra("place_id")
-        if (placeId != null) {
-            detailViewModel.fetchPlacesDetail(placeId)
-        }else {
-            Log.e("DetailActivity", "place_id is missing")
+                // Initialize ViewModel here after the token is fetched
+                detailViewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
+
+                // Now you can safely fetch the place details
+                val placeId = intent.getStringExtra("place_id")
+                if (placeId != null) {
+                    detailViewModel.fetchPlacesDetail(placeId)
+                } else {
+                    Log.e("DetailActivity", "place_id is missing")
+                }
+
+                // Observe LiveData from the ViewModel
+                observeViewModel()
+
+            } else {
+                Log.e("DetailActivity", "Failed to retrieve token")
+            }
         }
 
+        binding.edDate.setOnClickListener {
+            val dateListener = DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int ->
+                val formattedDate = String.format("%04d-%02d-%02d", year, monthOfYear + 1, dayOfMonth)
+                binding.edDate.setText(formattedDate)
+            }
+
+            DatePickerDialog(
+                this,
+                dateListener,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        }
+
+        binding.edTime.setOnClickListener {
+            val timeListener = TimePickerDialog.OnTimeSetListener { _: TimePicker, hourOfDay: Int, minute: Int ->
+                val formattedTime = String.format("%02d", hourOfDay)
+                binding.edTime.setText(formattedTime)
+            }
+
+            TimePickerDialog(
+                this,
+                timeListener,
+                calendar.get(Calendar.HOUR_OF_DAY),
+                calendar.get(Calendar.MINUTE),
+                true
+            ).show()
+        }
+    }
+
+    // Observe the ViewModel's LiveData
+    private fun observeViewModel() {
         detailViewModel.placesDetail.observe(this) { placesDetail ->
             Log.d("DetailActivity", "Received place details: $placesDetail")
             if (placesDetail != null) {
+                currentPlace = placesDetail
                 with(binding) {
                     tvDestName.text = placesDetail.placeName
                     tvDestLoc.text = placesDetail.googleMapsLink
@@ -76,52 +131,61 @@ class DetailActivity : AppCompatActivity() {
                     }
                 }
                 updateUI(placesDetail)
-                currentPlace = placesDetail
+                setupFabFavorite(placesDetail.placeId)
+
+                binding.btnPrediction.setOnClickListener {
+                    val placesId = placesDetail.placeId ?: return@setOnClickListener
+                    val date = binding.edDate.text.toString().takeIf { it.isNotEmpty() } ?: return@setOnClickListener
+                    val hourString = binding.edTime.text.toString().takeIf { it.isNotEmpty() } ?: return@setOnClickListener
+
+                    if (date.isEmpty()) {
+                        Snackbar.make(binding.root, "Masukkan tanggal", Snackbar.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+
+                    if (hourString.isEmpty()) {
+                        Snackbar.make(binding.root, "Masukkan waktu", Snackbar.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+                    val hour = hourString.toIntOrNull()
+                    if(hour == null) {
+                        Snackbar.make(binding.root, "Waktu tidak valid", Snackbar.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+
+                    lifecycleScope.launch {
+                        detailViewModel.fetchPrediction(placesId, date, hour)
+                    }
+                }
+
+                detailViewModel.predictionResult.observe(this) { predictionResult ->
+                    if (predictionResult != null) {
+                        binding.resultPrediction.text = predictionResult.occupancy.toString()
+                    } else {
+                        Snackbar.make(binding.root, "Tidak ada hasil prediksi", Snackbar.LENGTH_LONG).show()
+                    }
+                }
             }
         }
 
+        detailViewModel.isPredictionLoading.observe(this) { isPredictionLoading ->
+            binding.progressBarDetail.visibility = if (isPredictionLoading) View.VISIBLE else View.GONE
+        }
 
+        detailViewModel.statusPrediction.observe(this) { statusPrediction ->
+            if (statusPrediction != null ) {
+                Snackbar.make(binding.root, statusPrediction, Snackbar.LENGTH_SHORT).show()
+            }
+        }
 
         detailViewModel.isDetailLoading.observe(this) { isDetailLoading ->
             binding.progressBarDetail.visibility = if (isDetailLoading) View.VISIBLE else View.GONE
         }
 
         detailViewModel.snackBarText.observe(this) { snackBarText ->
-            if(snackBarText != null) {
+            if (snackBarText != null) {
                 Snackbar.make(binding.root, snackBarText, Snackbar.LENGTH_LONG).show()
             }
-        }
-
-        setupFabFavorite(placeId)
-
-        binding.edDate.setOnClickListener {
-            val dateListener = DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int ->
-                val formattedDate = "${dayOfMonth}/${monthOfYear + 1}/$year"
-                binding.edDate.setText(formattedDate)
-            }
-
-            DatePickerDialog(
-                this,
-                dateListener,
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH)
-            ).show()
-        }
-
-        binding.edTime.setOnClickListener {
-            val timeListener = TimePickerDialog.OnTimeSetListener { _: TimePicker, hourOfDay: Int, minute: Int ->
-                val formattedTime = String.format("%02d:%02d", hourOfDay, minute)
-                binding.edTime.setText(formattedTime)
-            }
-
-            TimePickerDialog(
-                this,
-                timeListener,
-                calendar.get(Calendar.HOUR_OF_DAY),
-                calendar.get(Calendar.MINUTE),
-                true
-            ).show()
         }
     }
 

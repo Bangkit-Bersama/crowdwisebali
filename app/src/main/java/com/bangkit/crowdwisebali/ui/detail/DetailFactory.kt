@@ -5,10 +5,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.crowdwisebali.data.local.FavoriteRepository
 
 @Suppress("UNCHECKED_CAST")
-class DetailFactory(private val repository: FavoriteRepository) : ViewModelProvider.Factory {
+class DetailFactory(private val repository: FavoriteRepository, private val token: String) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(DetailViewModel::class.java)) {
-            return DetailViewModel(repository) as T
+            return DetailViewModel(repository, token) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

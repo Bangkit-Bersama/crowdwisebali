@@ -1,7 +1,8 @@
 package com.bangkit.crowdwisebali.data.remote.retrofit
 
-import com.bangkit.crowdwisebali.data.local.FavoriteRepository
+import com.bangkit.crowdwisebali.data.pref.PredictionRequest
 import com.bangkit.crowdwisebali.data.remote.response.DetailPlacesResponse
+import com.bangkit.crowdwisebali.data.remote.response.PredictionResponse
 import com.bangkit.crowdwisebali.data.remote.response.RecommendationResponse
 import retrofit2.Call
 import retrofit2.http.*
@@ -22,9 +23,9 @@ interface ApiService {
         @Query("language") language: String
     ): DetailPlacesResponse
 
-//    @GET("recommendation")
-//    suspend fun suspendedSearchPlaces(
-//        @Query("id") id: Int,
-//        @Query("keyword") keyword: String
-//    ): FavoriteRepository
+    @POST("prediction")
+    @Headers("Content-Type:application/json")
+    suspend fun sendPrediction(
+        @Body predictionRequest: PredictionRequest
+    ): PredictionResponse
 }

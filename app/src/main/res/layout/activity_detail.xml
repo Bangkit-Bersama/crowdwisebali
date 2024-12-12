@@ -147,7 +147,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/prediction"
+            android:id="@+id/btn_prediction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -159,6 +159,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dateEditTextLayout" />
 
+<!--        <ProgressBar-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/progressBarPrediction"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            app:layout_constraintBottom_toTopOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="parent"/>-->
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -167,7 +178,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@id/prediction"
+            app:layout_constraintTop_toBottomOf="@id/btn_prediction"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/result_prediction"/>
@@ -177,7 +188,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="48dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="24dp"
             android:text="@string/maps"
