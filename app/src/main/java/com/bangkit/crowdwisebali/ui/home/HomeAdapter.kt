@@ -18,7 +18,7 @@ class HomeAdapter(private val onClick: (SearchResultItem) -> Unit) :
     class HomeViewHolder(private val binding: ItemHomeBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(response: SearchResultItem, onClick: (SearchResultItem) -> Unit) {
             binding.tvDestName.text = response.placeName
-            binding.tvDestLoc.text = response.googleMapsLink
+            binding.tvDestLoc.text = response.formattedAddress
             binding.rating.text = response.rating?.toString() ?: "0"
             binding.userCount.text = "(${response.userRatingCount ?: 0})"
 

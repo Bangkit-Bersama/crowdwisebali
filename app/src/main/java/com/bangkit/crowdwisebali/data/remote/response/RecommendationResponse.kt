@@ -23,6 +23,9 @@ data class SearchResultItem(
 	@field:SerializedName("google_maps_link")
 	val googleMapsLink: String? = null,
 
+	@field:SerializedName("formatted_address")
+	val formattedAddress: String? = null,
+
 	@field:SerializedName("place_name")
 	val placeName: String? = null,
 

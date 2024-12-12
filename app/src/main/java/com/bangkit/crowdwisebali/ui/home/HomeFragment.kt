@@ -56,12 +56,20 @@ class HomeFragment : Fragment() {
         profilePicture = view.findViewById(R.id.profile_picture)
         name = view.findViewById(R.id.name)
 
+
         val user = FirebaseAuth.getInstance().currentUser
         user?.let {
             name.text = it.displayName
             it.photoUrl?.let { photoUrl ->
                 Glide.with(this).load(photoUrl).into(profilePicture)
             }
+        }
+
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            // Lanjutkan proses
+        } else {
+            Log.e("HomeFragment", "User is not logged in")
         }
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
@@ -97,7 +105,7 @@ class HomeFragment : Fragment() {
         binding.rvRecommendation.isNestedScrollingEnabled = true
 
         // Fix the mistake with setting adapter for other RecyclerViews
-        binding.rvLodging.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+//        binding.rvLodging.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvPointOfInterest.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvEstablishment.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
@@ -108,13 +116,13 @@ class HomeFragment : Fragment() {
             binding.rvRecommendation.adapter = homeAdapter
 
             // Use proper adapter for each RecyclerView
-            lodgingAdapter.submitList(groupedData["lodging"])
-            binding.rvLodging.adapter = lodgingAdapter
+//            lodgingAdapter.submitList(groupedData["lodging"])
+//            binding.rvLodging.adapter = lodgingAdapter
 
-            poiAdapter.submitList(groupedData["point_of_interest"])
+            poiAdapter.submitList(groupedData["shopping_mall"])
             binding.rvPointOfInterest.adapter = poiAdapter
 
-            establishmentAdapter.submitList(groupedData["establishment"])
+            establishmentAdapter.submitList(groupedData["restaurant"])
             binding.rvEstablishment.adapter = establishmentAdapter
         }
 

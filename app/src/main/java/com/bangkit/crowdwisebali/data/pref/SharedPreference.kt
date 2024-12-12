@@ -35,4 +35,5 @@ class SharedPreferenceManager(private val context: Context) {
             onTokenReceived(null)
         }
     }
+
 }

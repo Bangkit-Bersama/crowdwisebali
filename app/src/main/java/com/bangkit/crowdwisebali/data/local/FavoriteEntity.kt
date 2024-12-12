@@ -17,7 +17,7 @@ class FavoriteEntity(
     @ColumnInfo(name = "place_name")
     val name: String? = "",
 
-    @ColumnInfo(name = "google_maps_link")
+    @ColumnInfo(name = "formatted_address")
     val location: String? = null,
 
     @ColumnInfo(name = "rating")
