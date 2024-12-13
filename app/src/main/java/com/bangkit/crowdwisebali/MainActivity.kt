@@ -6,7 +6,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -14,14 +13,12 @@ import androidx.navigation.ui.setupWithNavController
 import com.bangkit.crowdwisebali.data.pref.SettingPreferences
 import com.bangkit.crowdwisebali.data.pref.dataStore
 import com.bangkit.crowdwisebali.databinding.ActivityMainBinding
-import com.bangkit.crowdwisebali.ui.login.LoginActivity
 import com.bangkit.crowdwisebali.ui.onboarding.OnBoardingActivity
 import com.bangkit.crowdwisebali.ui.profile.ProfileFactory
 import com.bangkit.crowdwisebali.ui.profile.ProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,7 +36,6 @@ class MainActivity : AppCompatActivity() {
 
         val firebaseUser = auth.currentUser
         if (firebaseUser == null) {
-            // Not signed in, launch the Login activity
             startActivity(Intent(this, OnBoardingActivity::class.java))
             finish()
             return
@@ -66,14 +62,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
-        }
-    }
-
-    private fun signOut() {
-        lifecycleScope.launch {
-            auth.signOut()
-            startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-            finish()
         }
     }
 }

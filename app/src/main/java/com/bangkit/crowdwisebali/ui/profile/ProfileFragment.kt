@@ -63,7 +63,6 @@ class ProfileFragment : Fragment() {
 
         val switchTheme = view.findViewById<SwitchMaterial>(R.id.switch_theme)
 
-        // Use requireContext() to access application context
         val pref = SettingPreferences.getInstance(requireContext().dataStore)
         profileViewModel = ViewModelProvider(this, ProfileFactory(pref))[ProfileViewModel::class.java]
 
@@ -81,21 +80,18 @@ class ProfileFragment : Fragment() {
             profileViewModel.saveThemeSettings(isChecked)
         }
 
-        // Set OnClickListener for tv_about
         val tvAbout: TextView = view.findViewById(R.id.tv_about)
         tvAbout.setOnClickListener {
             val intent = Intent(requireContext(), AboutUsActivity::class.java)
             startActivity(intent)
         }
 
-        // Set OnClickListener for tv_info_app
         val tvInfoApp: TextView = view.findViewById(R.id.tv_info_app)
         tvInfoApp.setOnClickListener {
             val intent = Intent(requireContext(), InfoActivity::class.java)
             startActivity(intent)
         }
 
-        // Set OnClickListener for tv_language (for locale settings)
         val tvLanguage: TextView = view.findViewById(R.id.tv_language)
         tvLanguage.setOnClickListener {
             val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
@@ -111,17 +107,14 @@ class ProfileFragment : Fragment() {
     private fun signOut() {
         lifecycleScope.launch {
             try {
-                // Firebase sign-out
                 auth.signOut()
 
-                // Clear credential state if API >= 34
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
                     val credentialManager = CredentialManager.create(requireContext())
-                    val request = ClearCredentialStateRequest() // Add required data if needed
+                    val request = ClearCredentialStateRequest()
                     credentialManager.clearCredentialState(request)
                 }
 
-                // Redirect to LoginActivity
                 val intent = Intent(requireContext(), LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)

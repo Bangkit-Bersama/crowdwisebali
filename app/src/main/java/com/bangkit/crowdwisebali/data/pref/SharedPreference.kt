@@ -9,7 +9,7 @@ class SharedPreferenceManager(private val context: Context) {
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("your_pref_name", Context.MODE_PRIVATE)
 
-    fun saveToken(token: String) {
+    private fun saveToken(token: String) {
         sharedPreferences.edit().putString("token_key", token).apply()
     }
 

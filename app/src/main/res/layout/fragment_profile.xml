@@ -124,7 +124,7 @@
             android:focusable="true"
             android:text="@string/teks_language"
             android:textColor="@color/gray"
-            android:textSize="16dp"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_language_title" />

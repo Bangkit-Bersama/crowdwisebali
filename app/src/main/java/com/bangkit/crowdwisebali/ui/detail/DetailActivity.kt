@@ -3,6 +3,7 @@ package com.bangkit.crowdwisebali.ui.detail
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.icu.util.Calendar
 import android.net.Uri
@@ -79,7 +80,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         binding.edTime.setOnClickListener {
-            val timeListener = TimePickerDialog.OnTimeSetListener { _: TimePicker, hourOfDay: Int, minute: Int ->
+            val timeListener = TimePickerDialog.OnTimeSetListener { _: TimePicker, hourOfDay: Int, _: Int ->
                 val formattedTime = String.format("%02d", hourOfDay)
                 binding.edTime.setText(formattedTime)
             }
@@ -94,6 +95,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observeViewModel() {
         detailViewModel.placesDetail.observe(this) { placesDetail ->
             Log.d("DetailActivity", "Received place details: $placesDetail")
@@ -101,7 +103,7 @@ class DetailActivity : AppCompatActivity() {
                 currentPlace = placesDetail
                 with(binding) {
                     tvDestName.text = placesDetail.placeName
-                    tvDestLoc.text = placesDetail.googleMapsLink
+                    tvDestLoc.text = placesDetail.formattedAddress
                     rating.text = placesDetail.rating?.toString() ?: "0"
                     userCount.text = "(${placesDetail.userRatingCount ?: 0})"
 
@@ -154,7 +156,7 @@ class DetailActivity : AppCompatActivity() {
                 detailViewModel.predictionResult.observe(this) { predictionResult ->
                     if (predictionResult != null) {
                         val occupancy = predictionResult.occupancy
-                        val category = categorizeOccupancy(occupancy)
+                        val category = categorizeOccupancy(occupancy,this)
                         binding.resultPrediction.text = "$occupancy% ($category)"
                     } else {
                         Snackbar.make(binding.root, "Tidak ada hasil prediksi", Snackbar.LENGTH_LONG).show()
@@ -184,13 +186,13 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun categorizeOccupancy(occupancy: Double): String {
-        return when {
-            occupancy in 0.0..25.0 -> "Sepi"
-            occupancy in 26.0..50.0 -> "Agak Ramai"
-            occupancy in 51.0..75.0 -> "Ramai"
-            occupancy in 76.0..100.0 -> "Sangat Ramai"
-            else -> "Tidak Valid"
+    private fun categorizeOccupancy(occupancy: Double, context: Context): String {
+        return when (occupancy) {
+            in 0.0..25.0 -> context.getString(R.string.quiet)
+            in 25.1..50.0 -> context.getString(R.string.somewhat_busy)
+            in 50.1..75.0 -> context.getString(R.string.crowded)
+            in 75.1..100.0 -> context.getString(R.string.very_crowded)
+            else -> context.getString(R.string.invalid)
         }
     }
 

@@ -4,13 +4,9 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bangkit.crowdwisebali.R
-import com.bangkit.crowdwisebali.data.pref.SettingPreferences
-import com.bangkit.crowdwisebali.data.pref.dataStore
 
 class InfoActivity : AppCompatActivity() {
 

@@ -65,6 +65,12 @@
     <string name="time_pick">Choose Time</string>
     <string name="prediction">혼잡도 예측!</string>
     <string name="result_prediction">Result Prediction</string>
+    <string name="quiet">조용함</string>
+    <string name="somewhat_busy">약간 붐빔</string>
+    <string name="crowded">붐빔</string>
+    <string name="very_crowded">매우 붐빔</string>
+    <string name="invalid">유효하지 않음</string>
+
 
     <!-- 스플래시 -->
     <string name="title_one_splash">실시간 혼잡도 업데이트</string>

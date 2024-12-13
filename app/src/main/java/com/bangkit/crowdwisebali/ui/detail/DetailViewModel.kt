@@ -88,7 +88,7 @@ class DetailViewModel(private val repository: FavoriteRepository, private val to
         val favoriteEntity = FavoriteEntity(
             id = place.placeId ?: "",
             name = place.placeName,
-            location = place.googleMapsLink,
+            location = place.formattedAddress,
             rating = rating,
             userRatingCount = place.userRatingCount,
             photosItem = photosList

@@ -64,6 +64,11 @@
     <string name="time_pick">Choose Time</string>
     <string name="prediction">Predict the Crowd!</string>
     <string name="result_prediction">Result Prediction</string>
+    <string name="quiet">Quiet</string>
+    <string name="somewhat_busy">Somewhat Busy</string>
+    <string name="crowded">Crowded</string>
+    <string name="very_crowded">Very Crowded</string>
+    <string name="invalid">Invalid</string>
 
     <!--    Splash-->
     <string name="title_one_splash">Live Crowd Updates</string>

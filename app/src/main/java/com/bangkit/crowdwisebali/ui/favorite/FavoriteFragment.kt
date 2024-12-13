@@ -8,11 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.crowdwisebali.databinding.FragmentFavoriteBinding
 import com.bangkit.crowdwisebali.ui.detail.DetailActivity
-import com.bangkit.crowdwisebali.R
 
 class FavoriteFragment : Fragment() {
 
@@ -34,12 +32,6 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         favoriteViewModel = ViewModelProvider(this, FavoriteFactory.getInstance(requireContext()))[FavoriteViewModel::class.java]
-        setDynamicSpanCount()
-
-//        val displayMetrics = requireContext().resources.displayMetrics
-//        val width = displayMetrics.widthPixels
-//        val cardWidth = resources.getDimension(R.dimen.card_width)
-//        val spanCount = (width / cardWidth).toInt()
 
         binding.rvItemFav.layoutManager = LinearLayoutManager(requireContext())
         adapter = FavoriteAdapter { favorite ->
@@ -50,7 +42,6 @@ class FavoriteFragment : Fragment() {
             startActivity(intent)
         }
         binding.rvItemFav.adapter = adapter
-
 
         observeViewModel()
     }
@@ -68,15 +59,6 @@ class FavoriteFragment : Fragment() {
         favoriteViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             showLoading(isLoading)
         }
-    }
-
-    private fun setDynamicSpanCount() {
-        val displayMetrics = requireContext().resources.displayMetrics
-        val width = displayMetrics.widthPixels
-        val cardWidth = resources.getDimension(R.dimen.card_width)
-        val spanCount = (width / cardWidth).toInt()
-
-        (binding.rvItemFav.layoutManager as? GridLayoutManager)?.spanCount = spanCount
     }
 
     private fun showLoading(isLoading: Boolean){

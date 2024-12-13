@@ -50,7 +50,6 @@ class HomeViewModel : ViewModel() {
         return groupedData
     }
 
-    // Fetch recommendation data from API
     fun fetchRecommendation(latitude: Double, longitude: Double, placeType: String, token: String) {
         _isRecommendationLoading.value = true
         val client = ApiConfig.getApiService(token).getRecommendation(latitude, longitude, placeType)

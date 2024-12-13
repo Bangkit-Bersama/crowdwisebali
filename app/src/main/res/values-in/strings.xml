@@ -64,6 +64,11 @@
     <string name="time_pick">Pilih Waktu</string>
     <string name="prediction">Prediksi Kepadatan!</string>
     <string name="result_prediction">Hasil Prediksi</string>
+    <string name="quiet">Sepi</string>
+    <string name="somewhat_busy">Agak Ramai</string>
+    <string name="crowded">Ramai</string>
+    <string name="very_crowded">Sangat Ramai</string>
+    <string name="invalid">Tidak Valid</string>
 
     <!--    Splash-->
     <string name="title_one_splash">Pembaruan Kepadatan Pengunjung Secara Langsung</string>

@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.viewpager2.widget.ViewPager2
-import com.bangkit.crowdwisebali.MainActivity
 import com.bangkit.crowdwisebali.R
 import com.bangkit.crowdwisebali.ui.login.LoginActivity
 
@@ -37,10 +36,8 @@ class FirstScreen : Fragment() {
         skip.setOnClickListener {
             val sharedPref: SharedPreferences = requireActivity().getSharedPreferences("onboarding_pref", MODE_PRIVATE)
             sharedPref.edit().putBoolean("onboarding_completed", true).apply()
-            // Intent untuk membuka MainActivity
             val intent = Intent(activity, LoginActivity::class.java)
             startActivity(intent)
-            // Menutup onboarding screen agar tidak bisa kembali ke layar ini
             activity?.finish()
         }
     }

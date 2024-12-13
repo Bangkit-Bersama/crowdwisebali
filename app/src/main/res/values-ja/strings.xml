@@ -64,6 +64,12 @@
     <string name="time_pick">Choose Time</string>
     <string name="prediction">混雑予測！</string>
     <string name="result_prediction">Result Prediction</string>
+    <string name="quiet">静か</string>
+    <string name="somewhat_busy">やや混雑</string>
+    <string name="crowded">混雑</string>
+    <string name="very_crowded">非常に混雑</string>
+    <string name="invalid">無効</string>
+
 
     <!-- スプラッシュ -->
     <string name="title_one_splash">ライブの混雑状況の更新</string>
